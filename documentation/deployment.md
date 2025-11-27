@@ -111,6 +111,239 @@ The built `dist` folder contains static files that can be deployed to any static
 3. Configure CloudFront distribution pointing to your S3 bucket
 4. Set up custom domain (optional)
 
+#### Azure Web App
+
+Azure Web App is a fully managed platform for hosting web applications. This guide covers deploying your static React/Vite application to Azure Web App.
+
+##### Prerequisites
+
+- Azure account ([Create one for free](https://azure.microsoft.com/free/))
+- Azure CLI installed ([Installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli))
+- Git repository (optional, for continuous deployment)
+
+##### Method 1: Azure CLI Deployment
+
+1. **Login to Azure:**
+   ```bash
+   az login
+   ```
+
+2. **Create a Resource Group (if you don't have one):**
+   ```bash
+   az group create --name herdlinx-rg --location eastus
+   ```
+
+3. **Create an App Service Plan:**
+   ```bash
+   az appservice plan create --name herdlinx-plan --resource-group herdlinx-rg --sku FREE --is-linux
+   ```
+   
+   Note: For production, consider using `B1` (Basic) or higher SKU. Free tier has limitations.
+
+4. **Create a Web App:**
+   ```bash
+   az webapp create --resource-group herdlinx-rg --plan herdlinx-plan --name herdlinx-app --runtime "NODE:18-lts"
+   ```
+
+5. **Configure the Web App for Static Site:**
+   ```bash
+   az webapp config appsettings set --resource-group herdlinx-rg --name herdlinx-app --settings SCM_DO_BUILD_DURING_DEPLOYMENT=false
+   ```
+
+6. **Build your project locally:**
+   ```bash
+   npm run build
+   ```
+
+7. **Deploy using Azure CLI:**
+   ```bash
+   cd dist
+   az webapp up --name herdlinx-app --resource-group herdlinx-rg --runtime "NODE:18-lts" --html
+   ```
+
+   Or deploy from the project root:
+   ```bash
+   az webapp deploy --resource-group herdlinx-rg --name herdlinx-app --src-path dist --type static
+   ```
+
+##### Method 2: GitHub Actions (Continuous Deployment)
+
+1. **Create Azure Service Principal:**
+   ```bash
+   az ad sp create-for-rbac --name "herdlinx-deploy" --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/herdlinx-rg --sdk-auth
+   ```
+   
+   Save the JSON output as a GitHub secret named `AZURE_WEBAPP_PUBLISH_PROFILE`.
+
+2. **Create GitHub Actions Workflow:**
+
+   Create `.github/workflows/azure-deploy.yml`:
+   ```yaml
+   name: Deploy to Azure Web App
+
+   on:
+     push:
+       branches: [ main ]
+     workflow_dispatch:
+
+   jobs:
+     build-and-deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+
+         - name: Setup Node.js
+           uses: actions/setup-node@v3
+           with:
+             node-version: '18'
+
+         - name: Install dependencies
+           run: npm install
+
+         - name: Build
+           run: npm run build
+
+         - name: Deploy to Azure Web App
+           uses: azure/webapps-deploy@v2
+           with:
+             app-name: 'herdlinx-app'
+             publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+             package: ./dist
+   ```
+
+3. **Get Publish Profile:**
+   - Go to Azure Portal → Your Web App → Get publish profile
+   - Copy the content and add it as a GitHub secret named `AZURE_WEBAPP_PUBLISH_PROFILE`
+
+##### Method 3: VS Code Extension
+
+1. Install the "Azure App Service" extension in VS Code
+2. Sign in to Azure from VS Code
+3. Right-click on the `dist` folder → Deploy to Web App
+4. Select your subscription, resource group, and web app
+
+##### Method 4: ZIP Deploy
+
+1. **Build your project:**
+   ```bash
+   npm run build
+   ```
+
+2. **Create a ZIP file of the dist folder:**
+   ```bash
+   cd dist
+   zip -r ../deploy.zip .
+   cd ..
+   ```
+
+3. **Deploy using Azure CLI:**
+   ```bash
+   az webapp deployment source config-zip --resource-group herdlinx-rg --name herdlinx-app --src deploy.zip
+   ```
+
+##### Azure Configuration
+
+1. **Enable SPA Routing (web.config):**
+
+   Create a `web.config` file in your `dist` folder:
+   ```xml
+   <?xml version="1.0" encoding="utf-8"?>
+   <configuration>
+     <system.webServer>
+       <rewrite>
+         <rules>
+           <rule name="SPA Routes" stopProcessing="true">
+             <match url=".*" />
+             <conditions logicalGrouping="MatchAll">
+               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+               <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+             </conditions>
+             <action type="Rewrite" url="/" />
+           </rule>
+         </rules>
+       </rewrite>
+       <staticContent>
+         <mimeMap fileExtension=".json" mimeType="application/json" />
+         <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+         <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+       </staticContent>
+       <httpProtocol>
+         <customHeaders>
+           <add name="X-Content-Type-Options" value="nosniff" />
+           <add name="X-Frame-Options" value="DENY" />
+           <add name="X-XSS-Protection" value="1; mode=block" />
+         </customHeaders>
+       </httpProtocol>
+     </system.webServer>
+   </configuration>
+   ```
+
+   This file will be automatically included in your `dist` folder when you build if you place it in the `public` folder (Vite will copy it).
+
+2. **Configure Application Settings:**
+
+   Set these in Azure Portal → Your Web App → Configuration → Application settings:
+   - `WEBSITE_NODE_DEFAULT_VERSION`: `18-lts`
+   - `SCM_DO_BUILD_DURING_DEPLOYMENT`: `false` (for static sites)
+
+3. **Custom Domain Configuration:**
+
+   - Go to Azure Portal → Your Web App → Custom domains
+   - Click "Add custom domain"
+   - Follow the DNS configuration instructions
+   - Enable HTTPS/SSL certificate (free SSL available)
+
+##### Environment Variables
+
+1. **Set in Azure Portal:**
+   - Go to Configuration → Application settings
+   - Add your environment variables (prefixed with `VITE_` if needed)
+   - Note: For Vite, environment variables are baked into the build, so set them before building or use Azure's app settings for runtime config
+
+2. **Using Azure CLI:**
+   ```bash
+   az webapp config appsettings set --resource-group herdlinx-rg --name herdlinx-app --settings VITE_API_URL=https://api.example.com
+   ```
+
+##### Monitoring and Logging
+
+1. **Enable Application Insights:**
+   ```bash
+   az monitor app-insights component create --app herdlinx-insights --location eastus --resource-group herdlinx-rg
+   az webapp config appsettings set --resource-group herdlinx-rg --name herdlinx-app --settings APPINSIGHTS_INSTRUMENTATIONKEY="<your-key>"
+   ```
+
+2. **View Logs:**
+   ```bash
+   az webapp log tail --name herdlinx-app --resource-group herdlinx-rg
+   ```
+
+##### Troubleshooting Azure Deployment
+
+- **404 Errors on Routes:**
+  - Ensure `web.config` is in your `dist` folder
+  - Verify the file is deployed correctly
+
+- **Build Fails:**
+  - Check Node.js version in App Service settings
+  - Review deployment logs in Azure Portal
+
+- **Assets Not Loading:**
+  - Verify base path in `vite.config.js` (should be `/` for root deployment)
+  - Check that all files in `dist` are uploaded
+
+- **Slow Performance:**
+  - Enable CDN (Azure Front Door or Azure CDN)
+  - Enable compression in App Service settings
+  - Consider upgrading to a higher App Service Plan
+
+##### Cost Optimization
+
+- Use Free tier for development/testing
+- Consider Azure Static Web Apps for better static site hosting (free tier available)
+- Enable auto-shutdown for non-production environments
+- Use Azure Dev/Test pricing if eligible
+
 #### Traditional Web Server (Apache/Nginx)
 
 1. Build the project:
@@ -163,6 +396,44 @@ Place this in your `dist` folder:
   RewriteRule . /index.html [L]
 </IfModule>
 ```
+
+#### Azure Web App Configuration (web.config)
+
+For Azure Web App deployments, create a `web.config` file in your `public` folder (Vite will copy it to `dist` during build):
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="SPA Routes" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="/" />
+        </rule>
+      </rules>
+    </rewrite>
+    <staticContent>
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+      <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+      <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+    </staticContent>
+    <httpProtocol>
+      <customHeaders>
+        <add name="X-Content-Type-Options" value="nosniff" />
+        <add name="X-Frame-Options" value="DENY" />
+        <add name="X-XSS-Protection" value="1; mode=block" />
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+</configuration>
+```
+
+Note: If you don't have a `public` folder, create one and place `web.config` there. Vite automatically copies files from `public` to `dist` during build.
 
 ## Environment Variables
 
