@@ -1,12 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './ContactForm.css'
 
 const ContactForm = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   const handleChange = (e) => {
     setFormData({
@@ -25,7 +48,11 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contact" className="contact-section section">
+    <section 
+      id="contact" 
+      ref={sectionRef}
+      className={`contact-section section fade-in-section ${isVisible ? 'visible' : ''}`}
+    >
       <div className="container">
         <h2 className="section-title">Find Out More</h2>
         <p className="section-subtitle">Get in touch with us to learn more about HerdLinx</p>

@@ -1,10 +1,41 @@
+import { useState, useEffect, useRef } from 'react'
 import './BackgroundSection.css'
+import backgroundImage from '../images/background.jpg'
 
 const BackgroundSection = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section id="background" className="background-section section">
+    <section 
+      id="background" 
+      ref={sectionRef}
+      className={`background-section section fade-in-section ${isVisible ? 'visible' : ''}`}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container">
-        <h2 className="section-title">Our Background</h2>
+        <h2 className="section-title">Background</h2>
         
         {/* EDITABLE CONTENT START */}
         {/* TODO: Replace this content with actual company background */}
@@ -35,41 +66,6 @@ const BackgroundSection = () => {
               at their core. As we continue to grow and evolve, we remain focused on 
               delivering value to our clients and advancing the future of smart agriculture.
             </p>
-          </div>
-          
-          <div className="background-timeline">
-            <div className="timeline-item">
-              <div className="timeline-year">2023</div>
-              <div className="timeline-content">
-                <h4 className="timeline-title">Company Founded</h4>
-                <p className="timeline-description">
-                  HerdLinx was established with a mission to revolutionize cattle management 
-                  through innovative technology solutions.
-                </p>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-year">2024</div>
-              <div className="timeline-content">
-                <h4 className="timeline-title">Product Development</h4>
-                <p className="timeline-description">
-                  Intensive research and development phase, including partnerships with 
-                  agricultural institutions and field testing with early adopters.
-                </p>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-year">2025</div>
-              <div className="timeline-content">
-                <h4 className="timeline-title">Market Launch</h4>
-                <p className="timeline-description">
-                  Preparing for commercial launch and expanding our reach to feedlots and 
-                  farms across the region.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
         {/* EDITABLE CONTENT END */}

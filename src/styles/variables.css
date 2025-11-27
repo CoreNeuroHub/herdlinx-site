@@ -1,13 +1,13 @@
 :root {
-  /* Brand Color Palette - Used sparingly as accents */
-  --primary: #0A2540;
-  --secondary: #2D8B8B;
-  --accent: #F5A623;
-  --text-white: #FFFFFF;
+  /* Brand Color Palette */
+  --primary: #000000;        /* Dark Navy - Main background, headers, primary UI */
+  --secondary: #ffffff;      /* Teal - Links, hover states, secondary elements */
+  --accent: #535353;         /* Gold - CTAs, alerts, emphasis, highlights */
+  --text-white: #FFFFFF;     /* White - Text on dark backgrounds */
   
   /* Neutral Colors - Primary palette */
   --text-dark: #1A1A1A;
-  --text-medium: #4A4A4A;
+  --text-medium: #2e2e2e;
   --text-light: #6B6B6B;
   --text-lighter: #999999;
   --white: #FFFFFF;

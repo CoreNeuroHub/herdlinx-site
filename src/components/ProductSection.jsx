@@ -1,91 +1,94 @@
+import { useState, useEffect, useRef } from 'react'
 import './ProductSection.css'
 
 const ProductSection = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section id="product" className="product-section section">
+    <section 
+      id="product" 
+      ref={sectionRef}
+      className={`product-section section fade-in-section ${isVisible ? 'visible' : ''}`}
+    >
       <div className="container">
         <h2 className="section-title">Our Product</h2>
-        <p className="section-subtitle">Wireless RF Mesh System for Cattle Tracking and Monitoring</p>
         
         {/* EDITABLE CONTENT START */}
-        {/* TODO: Replace this content with actual product details */}
         <div className="product-content">
           <div className="product-description">
             <h3 className="product-title">Advanced Wireless Mesh Technology</h3>
             <p className="product-text">
-              Our wireless RF mesh system represents a breakthrough in livestock monitoring 
-              technology. Designed specifically for feedlots and large-scale farming operations, 
-              this robust network infrastructure enables comprehensive tracking and real-time 
-              monitoring of cattle across extensive areas.
+            Our RFID UHF Mesh Solutions simplify cattle export, import, and pen management with real-time tracking and compliance-ready reporting. From feedlot transfers to large-scale operations, we deliver accurate identification, streamlined processes, and enhanced biosecurity across every stage of cattle movement.
             </p>
           </div>
           
+          <h3 className="features-section-title">Key Features – In Development</h3>
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">RF</div>
-              <h4 className="feature-title">Mesh Network Architecture</h4>
+              <h4 className="feature-title">Global-Ready Identification</h4>
               <p className="feature-description">
-                Self-organizing mesh network ensures reliable connectivity even in challenging 
-                agricultural environments with extensive coverage areas.
+                UHF RFID tags ensure accurate animal ID for export/import documentation and traceability.
               </p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon">GPS</div>
-              <h4 className="feature-title">Real-Time Tracking</h4>
+              <h4 className="feature-title">Pen-to-Pen Movement Tracking</h4>
               <p className="feature-description">
-                Continuous location monitoring provides instant visibility into herd movements 
-                and individual animal positioning throughout your operation.
+                Monitor cattle transfers within your feedlot to optimize space and reduce handling errors.
               </p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon">HEALTH</div>
-              <h4 className="feature-title">Health Monitoring</h4>
+              <h4 className="feature-title">Wireless Mesh Connectivity</h4>
               <p className="feature-description">
-                Advanced sensors collect vital health metrics, enabling early detection of 
-                potential issues and proactive herd management.
+                Reliable, self-healing network for continuous data flow across large facilities.
               </p>
             </div>
             
             <div className="feature-card">
               <div className="feature-icon">POWER</div>
-              <h4 className="feature-title">Long Battery Life</h4>
+              <h4 className="feature-title">Compliance & Reporting</h4>
               <p className="feature-description">
-                Optimized power management ensures extended operational periods with minimal 
-                maintenance requirements.
-              </p>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">APP</div>
-              <h4 className="feature-title">Mobile Dashboard</h4>
-              <p className="feature-description">
-                Access comprehensive herd data and analytics through intuitive mobile and 
-                web interfaces, available anytime, anywhere.
-              </p>
-            </div>
-            
-            <div className="feature-card">
-              <div className="feature-icon">SEC</div>
-              <h4 className="feature-title">Secure Data</h4>
-              <p className="feature-description">
-                Enterprise-grade security protocols protect sensitive operational data and 
-                ensure compliance with agricultural data standards.
+                Generate export/import reports that meet international standards with ease.
               </p>
             </div>
           </div>
           
           <div className="product-benefits">
-            <h3 className="benefits-title">Key Benefits</h3>
+            <h3 className="benefits-title">Benefits</h3>
             <ul className="benefits-list">
-              <li>Improved operational efficiency through automated monitoring</li>
-              <li>Enhanced animal welfare with proactive health management</li>
-              <li>Reduced labor costs through automated tracking systems</li>
-              <li>Data-driven decision making with comprehensive analytics</li>
-              <li>Scalable solution that grows with your operation</li>
+              <li>Streamline Export Processes: Automate ID verification and reduce paperwork delays.</li>
+              <li>Improve Operational Efficiency: Track cattle movements without manual intervention.</li>
+              <li>Enhance Biosecurity: Maintain accurate records for disease control and traceability.</li>
+              <li>Scalable & Flexible: Adaptable for small feedlots or large export hubs.</li>
             </ul>
           </div>
+
         </div>
         {/* EDITABLE CONTENT END */}
       </div>

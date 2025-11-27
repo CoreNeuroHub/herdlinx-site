@@ -1,5 +1,25 @@
 .background-section {
   background: var(--white);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.background-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.40);
+  z-index: 0;
+}
+
+.background-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .background-content {
@@ -32,7 +52,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--border-light);
+  background: var(--secondary);
 }
 
 .timeline-item {
@@ -49,7 +69,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--text-dark);
+  background: var(--accent);
   border: 2px solid var(--white);
   box-shadow: 0 0 0 2px var(--border-light);
 }

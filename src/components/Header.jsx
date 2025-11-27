@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logoImage from '../images/Logo.jpg'
 import './Header.css'
 
 const Header = () => {
@@ -23,6 +24,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo" onClick={() => scrollToSection('about')}>
+          <img src={logoImage} alt="HerdLinx Logo" className="logo-image" />
           <h1>HerdLinx</h1>
         </div>
         <nav className="nav">
