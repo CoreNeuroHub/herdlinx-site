@@ -5,6 +5,7 @@ import ProductSection from './components/ProductSection'
 import BackgroundSection from './components/BackgroundSection'
 import TeamSection from './components/TeamSection'
 import ContactForm from './components/ContactForm'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <TeamSection />
         <ContactForm />
       </main>
+      <Footer />
     </div>
   )
 }

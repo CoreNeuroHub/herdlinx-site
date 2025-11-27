@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { FaGlobe, FaRoute, FaNetworkWired, FaClipboardCheck } from 'react-icons/fa'
 import './ProductSection.css'
 
 const ProductSection = () => {
@@ -47,7 +48,9 @@ const ProductSection = () => {
           <h3 className="features-section-title">Key Features – In Development</h3>
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">RF</div>
+              <div className="feature-icon">
+                <FaGlobe />
+              </div>
               <h4 className="feature-title">Global-Ready Identification</h4>
               <p className="feature-description">
                 UHF RFID tags ensure accurate animal ID for export/import documentation and traceability.
@@ -55,7 +58,9 @@ const ProductSection = () => {
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">GPS</div>
+              <div className="feature-icon">
+                <FaRoute />
+              </div>
               <h4 className="feature-title">Pen-to-Pen Movement Tracking</h4>
               <p className="feature-description">
                 Monitor cattle transfers within your feedlot to optimize space and reduce handling errors.
@@ -63,7 +68,9 @@ const ProductSection = () => {
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">HEALTH</div>
+              <div className="feature-icon">
+                <FaNetworkWired />
+              </div>
               <h4 className="feature-title">Wireless Mesh Connectivity</h4>
               <p className="feature-description">
                 Reliable, self-healing network for continuous data flow across large facilities.
@@ -71,7 +78,9 @@ const ProductSection = () => {
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">POWER</div>
+              <div className="feature-icon">
+                <FaClipboardCheck />
+              </div>
               <h4 className="feature-title">Compliance & Reporting</h4>
               <p className="feature-description">
                 Generate export/import reports that meet international standards with ease.

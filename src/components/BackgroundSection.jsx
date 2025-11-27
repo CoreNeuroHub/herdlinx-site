@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import './BackgroundSection.css'
-import backgroundImage from '../images/background.jpg'
+import backgroundImage from '../images/background2.jpg'
 
 const BackgroundSection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const backgroundRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,13 +28,53 @@ const BackgroundSection = () => {
     }
   }, [])
 
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !backgroundRef.current) return
+
+      const rect = sectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Calculate parallax offset when section is in viewport
+      if (rect.bottom >= 0 && rect.top <= windowHeight) {
+        const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height)
+        const parallaxOffset = scrollProgress * 200 // Adjust speed (200px max movement)
+        backgroundRef.current.style.transform = `translateY(${parallaxOffset}px)`
+      }
+    }
+
+    // Use requestAnimationFrame for smooth performance
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    handleScroll() // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   return (
     <section 
       id="background" 
       ref={sectionRef}
       className={`background-section section fade-in-section ${isVisible ? 'visible' : ''}`}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
+      <div 
+        ref={backgroundRef}
+        className="background-image-parallax"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
       <div className="container">
         <h2 className="section-title">Background</h2>
         

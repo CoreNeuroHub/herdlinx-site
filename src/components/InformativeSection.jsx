@@ -9,6 +9,7 @@ const InformativeSection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
   const sectionRef = useRef(null)
+  const backgroundRef = useRef(null)
 
   const slides = [
     slide1,
@@ -37,6 +38,42 @@ const InformativeSection = () => {
     }
   }, [])
 
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !backgroundRef.current) return
+
+      const rect = sectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Calculate parallax offset when section is in viewport
+      if (rect.bottom >= 0 && rect.top <= windowHeight) {
+        const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height)
+        const parallaxOffset = scrollProgress * 200 // Adjust speed (200px max movement)
+        backgroundRef.current.style.transform = `translateY(${parallaxOffset}px)`
+      }
+    }
+
+    // Use requestAnimationFrame for smooth performance
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    handleScroll() // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   // Auto-advance slideshow
   useEffect(() => {
     if (slides.length <= 1) return
@@ -53,8 +90,12 @@ const InformativeSection = () => {
       id="about" 
       ref={sectionRef}
       className={`informative-section section fade-in-section ${isVisible ? 'visible' : ''}`}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
+      <div 
+        ref={backgroundRef}
+        className="background-image-parallax"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
       <div className="container">
         <h2 className="section-title">Building RFID Solutions for Feedlot Automation</h2>
         

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import './ContactForm.css'
+import backgroundImage from '../images/background3.jpg'
 
 const ContactForm = () => {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const backgroundRef = useRef(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +33,42 @@ const ContactForm = () => {
     }
   }, [])
 
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !backgroundRef.current) return
+
+      const rect = sectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Calculate parallax offset when section is in viewport
+      if (rect.bottom >= 0 && rect.top <= windowHeight) {
+        const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height)
+        const parallaxOffset = scrollProgress * 200 // Adjust speed (200px max movement)
+        backgroundRef.current.style.transform = `translateY(${parallaxOffset}px)`
+      }
+    }
+
+    // Use requestAnimationFrame for smooth performance
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    handleScroll() // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -53,9 +91,13 @@ const ContactForm = () => {
       ref={sectionRef}
       className={`contact-section section fade-in-section ${isVisible ? 'visible' : ''}`}
     >
+      <div 
+        ref={backgroundRef}
+        className="background-image-parallax"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
       <div className="container">
         <h2 className="section-title">Find Out More</h2>
-        <p className="section-subtitle">Get in touch with us to learn more about HerdLinx</p>
         
         {/* EDITABLE CONTENT START */}
         {/* TODO: Update form action and endpoint when backend is ready */}
@@ -73,7 +115,7 @@ const ContactForm = () => {
                 <strong>Email:</strong> info@herdlinx.com
               </p>
               <p className="info-item">
-                <strong>Location:</strong> Lethbridge, Alberta, Canada
+                <strong>Location:</strong> Lethbridge, AB
               </p>
             </div>
           </div>

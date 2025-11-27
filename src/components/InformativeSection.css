@@ -1,10 +1,22 @@
 .informative-section {
   background: var(--white);
+  position: relative;
+  padding-top: calc(var(--spacing-xl) + 80px);
+  overflow: hidden;
+}
+
+.background-image-parallax {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  right: 0;
+  bottom: -20%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
-  padding-top: calc(var(--spacing-xl) + 80px);
+  z-index: 0;
+  will-change: transform;
+  opacity: .85;
 }
 
 .informative-section::before {
