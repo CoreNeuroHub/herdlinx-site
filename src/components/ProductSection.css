@@ -1,5 +1,30 @@
 .product-section {
   background: var(--background-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-background-parallax {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  right: 0;
+  bottom: -20%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.product-background-logo {
+  position: absolute;
+  opacity: 0.1;
+  object-fit: contain;
+  user-select: none;
+  will-change: transform;
+}
+
+.product-section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .product-content {
