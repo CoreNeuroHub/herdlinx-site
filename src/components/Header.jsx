@@ -38,7 +38,7 @@ const Header = () => {
             Background
           </button>
           <button onClick={() => scrollToSection('team')} className="nav-link">
-            Our Team
+            The Team
           </button>
           <button onClick={() => scrollToSection('contact')} className="nav-link">
             Contact

@@ -73,7 +73,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <button onClick={() => scrollToSection('team')} className="footer-link">
-                    Our Team
+                    The Team
                   </button>
                 </li>
                 <li>
