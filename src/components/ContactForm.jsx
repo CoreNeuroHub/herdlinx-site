@@ -14,6 +14,7 @@ const ContactForm = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState({ type: null, message: '' })
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,12 +118,14 @@ const ContactForm = () => {
         message: 'Thank you for your interest! We will be in touch soon.' 
       })
       setFormData({ name: '', email: '', message: '' })
+      setShowModal(true)
     } catch (error) {
       console.error('Email sending failed:', error)
       setSubmitStatus({ 
         type: 'error', 
         message: error.message || 'Failed to send message. Please try again or contact us directly at brad@herdlinx.ca' 
       })
+      setShowModal(true)
     } finally {
       setIsSubmitting(false)
     }
@@ -213,15 +216,34 @@ const ContactForm = () => {
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
-            
-            {submitStatus.message && (
-              <div 
-                className={`submit-status ${submitStatus.type === 'success' ? 'submit-success' : 'submit-error'}`}
-              >
-                {submitStatus.message}
-              </div>
-            )}
           </form>
+          
+          {showModal && submitStatus.message && (
+            <div className="modal-overlay" onClick={() => setShowModal(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button 
+                  className="modal-close" 
+                  onClick={() => setShowModal(false)}
+                  aria-label="Close modal"
+                >
+                  ×
+                </button>
+                <div className={`modal-icon ${submitStatus.type === 'success' ? 'modal-success' : 'modal-error'}`}>
+                  {submitStatus.type === 'success' ? '✓' : '✕'}
+                </div>
+                <h3 className="modal-title">
+                  {submitStatus.type === 'success' ? 'Message Sent!' : 'Error'}
+                </h3>
+                <p className="modal-message">{submitStatus.message}</p>
+                <button 
+                  className="modal-button"
+                  onClick={() => setShowModal(false)}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         {/* EDITABLE CONTENT END */}
       </div>
