@@ -34,7 +34,7 @@ dist-ssr
 .vercel
 .env*.local
 deploy.zip
-
+.env
 
 
 
