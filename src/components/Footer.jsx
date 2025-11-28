@@ -47,7 +47,7 @@ const Footer = () => {
               <h2>HerdLinx</h2>
             </div>
             <p className="footer-description">
-              Wireless RF mesh system for cattle tracking. 
+              Wireless RF system for cattle tracking. 
               Revolutionizing livestock management with innovative technology.
             </p>
           </div>

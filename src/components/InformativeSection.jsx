@@ -105,7 +105,7 @@ const InformativeSection = () => {
           <div className="content-block">
             <h3 className="content-title">Cattle trade demands accurate ID and tracking to meet regulations and ensure efficiency.</h3>
             <p className="content-text">
-            Our RFID UHF wireless mesh system provides a robust solution for managing cattle across borders and within feedlots. From pen-to-pen transfers to large-scale export operations, we deliver real-time visibility and compliance-ready data..
+            Our RFID UHF system provides a robust solution for managing cattle across borders and within feedlots. From pen-to-pen transfers to large-scale export operations, we deliver real-time visibility and compliance-ready data..
             </p>
           </div>
 

@@ -105,7 +105,7 @@ const ContactForm = () => {
           <div className="contact-info">
             <h3 className="info-title">Contact Information</h3>
             <p className="info-text">
-              Interested in learning more about our wireless RF mesh system for cattle tracking? 
+              Interested in learning more about our wireless RF system for cattle tracking? 
               We'd love to hear from you. Whether you're a feedlot operator, farmer, investor, 
               or potential partner, we're here to answer your questions and discuss how HerdLinx 
               can benefit your operation.

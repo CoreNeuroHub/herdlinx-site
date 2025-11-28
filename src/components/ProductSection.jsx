@@ -182,9 +182,9 @@ const ProductSection = () => {
         {/* EDITABLE CONTENT START */}
         <div className="product-content">
           <div className="product-description">
-            <h3 className="product-title">Advanced Wireless Mesh Technology</h3>
+            <h3 className="product-title">Advanced RFID Technology</h3>
             <p className="product-text">
-            Our RFID UHF Mesh Solutions simplify cattle export, import, and pen management with real-time tracking and compliance-ready reporting. From feedlot transfers to large-scale operations, we deliver accurate identification, streamlined processes, and enhanced biosecurity across every stage of cattle movement.
+            Our RFID UHF Solutions simplify cattle export, import, and pen management with real-time tracking and compliance-ready reporting. From feedlot transfers to large-scale operations, we deliver accurate identification, streamlined processes, and enhanced biosecurity across every stage of cattle movement.
             </p>
           </div>
           
@@ -214,7 +214,7 @@ const ProductSection = () => {
               <div className="feature-icon">
                 <FaNetworkWired />
               </div>
-              <h4 className="feature-title">Wireless Mesh Connectivity</h4>
+              <h4 className="feature-title">Network Connectivity</h4>
               <p className="feature-description">
                 Reliable, self-healing network for continuous data flow across large facilities.
               </p>
