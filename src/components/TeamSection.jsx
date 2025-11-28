@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './TeamSection.css'
 import bradImage from '../images/team/brad.png'
-import kerriImage from '../images/team/kerri.png'
+import kerriImage from '../images/team/kerri.jpg'
 import logoImage from '../images/Logo_inverted.png'
 
 const TeamSection = () => {
@@ -201,7 +201,8 @@ const TeamSection = () => {
             <h3 className="member-name">Kerri Lynn Haney-Vanderberg</h3>
             <p className="member-role">Secretary & Co-Founder</p>
             <p className="member-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            With a strong background in business organization and administration, Kerri brings invaluable support to the team, helping guide the company's direction and growth alongside Brad.
+            </p>
           </div>
         </div>
         
