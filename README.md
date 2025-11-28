@@ -38,6 +38,26 @@ The built files will be in the `dist` directory.
 - `src/App.jsx` - Main application component
 - `src/App.css` - Global styles
 
+## Contact Form Setup
+
+The contact form uses EmailJS to send emails. To configure it:
+
+1. Sign up for a free account at [EmailJS](https://www.emailjs.com/)
+2. Create an email service (Gmail recommended)
+3. Create an email template with these variables:
+   - `{{from_name}}` - Sender's name
+   - `{{from_email}}` - Sender's email
+   - `{{message}}` - Message content
+   - `{{to_email}}` - Recipient email (brad@herdlinx.ca)
+   - `{{reply_to}}` - Reply-to email
+4. Create a `.env` file in the root directory with:
+   ```
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+5. Restart the development server after adding the `.env` file
+
 ## Content Editing
 
 All placeholder content is clearly marked with comments in the component files:
@@ -63,6 +83,7 @@ The website uses an earth-tone color palette defined in `src/styles/variables.cs
 - React 18
 - Vite
 - CSS Modules
+
 
 
 

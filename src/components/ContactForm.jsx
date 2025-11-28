@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './ContactForm.css'
 import backgroundImage from '../images/background3.jpg'
 
@@ -11,6 +12,8 @@ const ContactForm = () => {
     email: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState({ type: null, message: '' })
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,13 +79,53 @@ const ContactForm = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
-    // EDITABLE CONTENT: Replace this with actual form submission endpoint
-    console.log('Form submitted:', formData)
-    alert('Thank you for your interest! We will be in touch soon.')
-    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
+
+    try {
+      // EmailJS configuration
+      // These values should be set in your .env file:
+      // VITE_EMAILJS_SERVICE_ID=your_service_id
+      // VITE_EMAILJS_TEMPLATE_ID=your_template_id
+      // VITE_EMAILJS_PUBLIC_KEY=your_public_key
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.')
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'brad@herdlinx.ca',
+          reply_to: formData.email
+        },
+        publicKey
+      )
+
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Thank you for your interest! We will be in touch soon.' 
+      })
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      setSubmitStatus({ 
+        type: 'error', 
+        message: error.message || 'Failed to send message. Please try again or contact us directly at brad@herdlinx.ca' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -112,7 +155,7 @@ const ContactForm = () => {
             </p>
             <div className="info-details">
               <p className="info-item">
-                <strong>Email:</strong> info@herdlinx.com
+                <strong>Email:</strong> brad@herdlinx.ca
               </p>
               <p className="info-item">
                 <strong>Location:</strong> Lethbridge, AB
@@ -163,9 +206,21 @@ const ContactForm = () => {
               />
             </div>
             
-            <button type="submit" className="form-submit">
-              Send Message
+            <button 
+              type="submit" 
+              className="form-submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            
+            {submitStatus.message && (
+              <div 
+                className={`submit-status ${submitStatus.type === 'success' ? 'submit-success' : 'submit-error'}`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
           </form>
         </div>
         {/* EDITABLE CONTENT END */}
