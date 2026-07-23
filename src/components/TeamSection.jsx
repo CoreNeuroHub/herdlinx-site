@@ -187,7 +187,7 @@ const TeamSection = () => {
             <div className="member-avatar">
               <img src={bradImage} alt="Brad Vanderberg" className="avatar-image" />
             </div>
-            <h3 className="member-name">Brad Vanderberg</h3>
+            <h3 className="member-name">Brad Vanderberg</h3>I
             <p className="member-role">President & Founder</p>
             <p className="member-bio">
             Born and raised in Lethbridge, Alberta, Brad brings over 18 years of experience as an electrician, running his own successful business. Brad decided to leverage his technical expertise and deep understanding of feedlot operations to start a new venture focused on solving real-world challenges in cattle management.

@@ -44,6 +44,62 @@ Navigate to the URL shown (typically `http://localhost:4173`) to verify everythi
 
 ## Deployment Options
 
+### Cloudflare Workers (Recommended)
+
+This project is configured for Cloudflare Workers static-assets deployment via [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) — continuous deployment from GitHub on every push.
+
+#### Prerequisites
+
+- Cloudflare account
+- GitHub repository access
+- `wrangler.toml` in the repo root (already configured)
+
+#### One-Time Dashboard Setup
+
+1. Go to [Workers & Pages](https://dash.cloudflare.com/) in the Cloudflare dashboard.
+2. Create a Worker named **`herdlinx-site`** (must match the `name` in `wrangler.toml` exactly).
+3. Open the Worker → **Settings** → **Builds** → **Connect** your GitHub repository.
+4. Install the Cloudflare Workers & Pages GitHub App when prompted (scope to this repo only).
+5. Configure build settings:
+   - **Production branch:** `main` (or your default branch)
+   - **Build command:** `npm run build`
+   - **Deploy command:** `npx wrangler deploy` (default)
+6. Add **build environment variables** (required for the contact form):
+
+   | Variable | Source |
+   |----------|--------|
+   | `VITE_EMAILJS_SERVICE_ID` | [EmailJS dashboard](https://www.emailjs.com/) |
+   | `VITE_EMAILJS_TEMPLATE_ID` | EmailJS dashboard |
+   | `VITE_EMAILJS_PUBLIC_KEY` | EmailJS dashboard |
+
+   Vite inlines these at build time — they must be set before `npm run build` runs in CI.
+
+7. Push a commit to trigger the first deployment.
+
+#### After Deployment
+
+- Production URL: `https://herdlinx-site.<account>.workers.dev`
+- **Preview deployments:** Pushes to non-production branches automatically create preview URLs.
+- **Custom domain (optional):** Worker → Settings → Domains & Routes → add your domain (e.g. `herdlinx.ca`).
+
+#### Manual Deploy (Local)
+
+```bash
+npm install
+npm run deploy
+```
+
+Requires a Cloudflare API token with Workers permissions (`wrangler login` or `CLOUDFLARE_API_TOKEN` env var).
+
+#### Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| Build fails with name mismatch | Ensure the Worker name in the dashboard matches `herdlinx-site` in `wrangler.toml` |
+| Contact form error at runtime | Verify `VITE_EMAILJS_*` variables are set in Workers Builds environment settings |
+| 404 on deep links | `not_found_handling = "single-page-application"` in `wrangler.toml` handles SPA fallback |
+| Build fails locally | Run `node --version` (v16+), delete `node_modules` and reinstall |
+
 ### Static Hosting Services
 
 The built `dist` folder contains static files that can be deployed to any static hosting service.

@@ -32,6 +32,8 @@ dist-ssr
 
 
 .vercel
+.wrangler
+.dev.vars
 .env*.local
 deploy.zip
 .env
