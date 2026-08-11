@@ -88,8 +88,8 @@ const Footer = () => {
               <h3 className="footer-column-title">Contact</h3>
               <ul className="footer-link-list">
                 <li>
-                  <a href="mailto:info@herdlinx.com" className="footer-link">
-                    info@herdlinx.com
+                  <a href="mailto:brad@herdlinx.ca" className="footer-link">
+                    brad@herdlinx.ca
                   </a>
                 </li>
                 <li>
