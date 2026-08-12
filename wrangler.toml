@@ -1,6 +1,7 @@
-name = "herdlinx-site"
+name = "herdlinx"
 compatibility_date = "2026-07-23"
 
+# Static SPA assets from Vite (`npm run build` → ./dist)
 [assets]
 directory = "./dist"
 not_found_handling = "single-page-application"
