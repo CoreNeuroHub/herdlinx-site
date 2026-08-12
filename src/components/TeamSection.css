@@ -1,64 +1,27 @@
 .team-section {
-  background: var(--background-light);
+  background: var(--off-white);
   position: relative;
-  overflow: hidden;
-}
-
-.team-background-parallax {
-  position: absolute;
-  top: -20%;
-  left: 0;
-  right: 0;
-  bottom: -20%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.team-background-logo {
-  position: absolute;
-  opacity: 0.1;
-  object-fit: contain;
-  user-select: none;
-  will-change: transform;
-}
-
-.team-section .container {
-  position: relative;
-  z-index: 1;
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-xl);
-  margin-top: var(--spacing-xl);
-  margin-bottom: var(--spacing-2xl);
+  margin-top: var(--spacing-lg);
 }
 
 .team-member {
-  background: var(--white);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
   text-align: center;
-  transition: var(--transition-smooth);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
-}
-
-.team-member:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--secondary);
-  transform: translateY(-2px);
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid var(--border-light);
 }
 
 .member-avatar {
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto var(--spacing-md);
-  border-radius: 50%;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  background: var(--primary);
+  border: 2px solid var(--accent-muted);
 }
 
 .avatar-image {
@@ -66,78 +29,33 @@
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.avatar-initials {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-white);
-  letter-spacing: 1px;
+  filter: grayscale(15%);
 }
 
 .member-name {
+  font-family: var(--font-display);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   color: var(--text-dark);
   margin-bottom: var(--spacing-xs);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 .member-role {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  color: var(--text-medium);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent);
   margin-bottom: var(--spacing-sm);
-  text-transform: none;
-  letter-spacing: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .member-bio {
   font-size: var(--font-size-base);
-  color: var(--text-medium);
-  line-height: 1.7;
-}
-
-.partnership-section {
-  max-width: 800px;
-  margin: var(--spacing-2xl) auto 0;
-  padding: var(--spacing-xl);
-  background: var(--white);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
-}
-
-.partnership-title {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-  letter-spacing: -0.01em;
-}
-
-.partnership-content {
-  text-align: center;
-}
-
-.partnership-logo {
-  margin-bottom: var(--spacing-md);
-}
-
-.logo-text {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-  letter-spacing: -0.02em;
-  text-transform: none;
-}
-
-.partnership-description {
-  font-size: var(--font-size-base);
-  color: var(--text-medium);
-  line-height: 1.7;
-  margin-bottom: var(--spacing-sm);
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 420px;
+  margin: 0 auto;
   text-align: left;
 }
 
@@ -146,26 +64,9 @@
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
   }
-  
+
   .member-avatar {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .avatar-initials {
-    font-size: var(--font-size-xl);
-  }
-  
-  .partnership-section {
-    padding: var(--spacing-lg);
-  }
-  
-  .logo-text {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .partnership-description {
-    text-align: left;
+    width: 160px;
+    height: 160px;
   }
 }
-

@@ -35,20 +35,20 @@ const Footer = () => {
   }
 
   return (
-    <footer 
+    <footer
       ref={footerRef}
       className={`footer fade-in-section ${isVisible ? 'visible' : ''}`}
     >
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-brand">
-            <div className="footer-logo" onClick={() => scrollToSection('about')}>
+            <div className="footer-logo" onClick={() => scrollToSection('hero')}>
               <img src={logoImage} alt="HerdLinx Logo" className="footer-logo-image" />
-              <h2>HerdLinx</h2>
+              <span className="footer-logo-text">HerdLinx</span>
             </div>
             <p className="footer-description">
-              Wireless RF system for cattle tracking. 
-              Revolutionizing livestock management with innovative technology.
+              RFID tracking for cattle movement, identification, manifest building,
+              and online management — built for feedlot operators.
             </p>
           </div>
 
@@ -56,31 +56,11 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-column-title">Navigation</h3>
               <ul className="footer-link-list">
-                <li>
-                  <button onClick={() => scrollToSection('about')} className="footer-link">
-                    About
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection('product')} className="footer-link">
-                    Product
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection('background')} className="footer-link">
-                    Background
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection('team')} className="footer-link">
-                    The Team
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection('contact')} className="footer-link">
-                    Contact
-                  </button>
-                </li>
+                <li><button onClick={() => scrollToSection('about')} className="footer-link">About</button></li>
+                <li><button onClick={() => scrollToSection('product')} className="footer-link">Product</button></li>
+                <li><button onClick={() => scrollToSection('background')} className="footer-link">Background</button></li>
+                <li><button onClick={() => scrollToSection('team')} className="footer-link">The Team</button></li>
+                <li><button onClick={() => scrollToSection('contact')} className="footer-link">Contact</button></li>
               </ul>
             </div>
 
@@ -111,4 +91,3 @@ const Footer = () => {
 }
 
 export default Footer
-

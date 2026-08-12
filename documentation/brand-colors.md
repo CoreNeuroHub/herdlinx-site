@@ -2,42 +2,42 @@
 
 ## Color Palette
 
-### Primary (Dark Navy)
-**Hex Code:** `#0A2540`
-- Used for main elements, headers, and primary UI components
-- Creates a strong, professional foundation
-
-### Secondary (Teal)
-**Hex Code:** `#2D8B8B`
-- Used for secondary elements, highlights, and interactive components
-- Provides balance and visual interest
+### Primary (Black)
+**Hex Code:** `#000000`
+- Used for hero overlays, header, footer, and dark content bands
+- Creates a strong, premium foundation
 
 ### Accent (Gold)
-**Hex Code:** `#F5A623`
-- Used for important calls-to-action, notifications, and emphasis
-- Draws attention to key information
+**Hex Code:** `#b6894c`
+- Used for CTAs, links, focus states, and key emphasis
+- Draws attention to important actions without overwhelming
 
-### Text (White)
+### Accent Hover
+**Hex Code:** `#c9a065`
+- Hover state for gold interactive elements
+
+### Secondary (White)
 **Hex Code:** `#FFFFFF`
-- Used for text on dark backgrounds
-- Ensures readability and contrast
+- Used for text on dark backgrounds and light section surfaces
+
+### Surface Dark
+**Hex Code:** `#121212`
+- Elevated dark surfaces and body text on light backgrounds
 
 ## Usage Guidelines
 
-- **Primary (Dark Navy)**: Main background, navigation bars, primary buttons
-- **Secondary (Teal)**: Links, secondary buttons, hover states, badges
-- **Accent (Gold)**: Alerts, important notifications, call-to-action buttons, highlights
-- **Text (White)**: Headings and text on dark backgrounds
+- **Primary (Black)**: Hero overlay, navigation, footer, dark bands
+- **Accent (Gold)**: CTAs, focus rings, bullet accents, link hovers
+- **Secondary (White)**: Headings and text on dark backgrounds; light section backgrounds
+- **Off-White (#F5F5F5)**: Alternating light content sections
 
 ## Color Combinations
 
-### Light Mode
-- Primary text on White background
-- White text on Dark Navy background
-- Teal accents for interactive elements
+### Light Sections
+- Dark text (#121212) on white/off-white backgrounds
+- Gold accents for interactive elements and dividers
 
-### Dark Mode
-- White text on Dark Navy background
-- Gold accents for emphasis
-- Teal for secondary information
-
+### Dark Sections
+- White text on black/dark surfaces
+- Gold accents for CTAs and emphasis
+- Muted gold washes for subtle backgrounds

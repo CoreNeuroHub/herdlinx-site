@@ -23,9 +23,9 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
-        <div className="logo" onClick={() => scrollToSection('about')}>
+        <div className="logo" onClick={() => scrollToSection('hero')}>
           <img src={logoImage} alt="HerdLinx Logo" className="logo-image" />
-          <h1>HerdLinx</h1>
+          <span className="logo-text">HerdLinx</span>
         </div>
         <nav className="nav">
           <button onClick={() => scrollToSection('about')} className="nav-link">
@@ -40,7 +40,7 @@ const Header = () => {
           <button onClick={() => scrollToSection('team')} className="nav-link">
             The Team
           </button>
-          <button onClick={() => scrollToSection('contact')} className="nav-link">
+          <button onClick={() => scrollToSection('contact')} className="nav-cta">
             Contact
           </button>
         </nav>
@@ -50,4 +50,3 @@ const Header = () => {
 }
 
 export default Header
-
