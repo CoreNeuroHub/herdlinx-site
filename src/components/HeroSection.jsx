@@ -1,13 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './HeroSection.css'
 import backgroundImage from '../images/background.jpg'
+import heroVideo from '../videos/Herdlinx Hero BG.mp4'
 
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const videoRef = useRef(null)
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100)
     return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const syncPlayback = () => {
+      if (motionQuery.matches) {
+        video.pause()
+      } else {
+        video.play().catch(() => {})
+      }
+    }
+
+    syncPlayback()
+    motionQuery.addEventListener('change', syncPlayback)
+
+    return () => motionQuery.removeEventListener('change', syncPlayback)
   }, [])
 
   const scrollToSection = (sectionId) => {
@@ -19,11 +41,18 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
-      <div
+      <video
+        ref={videoRef}
         className="hero-background"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={backgroundImage}
         aria-hidden="true"
-      />
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
       <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-content">
