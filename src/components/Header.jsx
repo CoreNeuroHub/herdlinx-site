@@ -24,7 +24,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo" onClick={() => scrollToSection('hero')}>
-          <img src={logoImage} alt="HerdLinx RFID Solutions" className="logo-image" />
+          <img src={logoImage} alt="Herdlinx RFID Solutions" className="logo-image" />
         </div>
         <nav className="nav">
           <button onClick={() => scrollToSection('about')} className="nav-link">

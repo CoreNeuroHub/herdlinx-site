@@ -56,7 +56,7 @@ const HeroSection = () => {
       <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-content">
-        <p className="hero-brand">HerdLinx</p>
+        <p className="hero-brand">Herdlinx</p>
         <h1 className="hero-headline">
           RFID tracking for cattle movement, identification, and compliance
         </h1>

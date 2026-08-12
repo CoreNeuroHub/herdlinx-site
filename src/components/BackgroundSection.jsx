@@ -83,7 +83,7 @@ const BackgroundSection = () => {
         <div className="background-content">
           <div className="background-story">
             <p className="story-text">
-              HerdLinx was founded with a vision to bridge the gap between traditional 
+              Herdlinx was founded with a vision to bridge the gap between traditional 
               agricultural practices and modern technological innovation. Recognizing the 
               growing need for efficient livestock management solutions in an increasingly 
               complex agricultural landscape, our team set out to develop a system that 

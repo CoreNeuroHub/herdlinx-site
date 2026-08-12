@@ -43,7 +43,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo" onClick={() => scrollToSection('hero')}>
-              <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
+              <img src={logoImage} alt="Herdlinx RFID Solutions" className="footer-logo-image" />
             </div>
             <p className="footer-description">
               RFID tracking for cattle movement, identification, manifest building,
@@ -81,7 +81,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} HerdLinx. All rights reserved.
+            &copy; {new Date().getFullYear()} Herdlinx. All rights reserved.
           </p>
         </div>
       </div>
