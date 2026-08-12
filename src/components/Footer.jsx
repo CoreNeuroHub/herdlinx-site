@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './Footer.css'
-import logoImage from '../images/Logo.jpg'
+import logoImage from '../images/logo_gold_nobg.png'
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -43,8 +43,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo" onClick={() => scrollToSection('hero')}>
-              <img src={logoImage} alt="HerdLinx Logo" className="footer-logo-image" />
-              <span className="footer-logo-text">HerdLinx</span>
+              <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
             </div>
             <p className="footer-description">
               RFID tracking for cattle movement, identification, manifest building,

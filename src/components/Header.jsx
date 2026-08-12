@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import logoImage from '../images/Logo.jpg'
+import logoImage from '../images/logo_gold_nobg.png'
 import './Header.css'
 
 const Header = () => {
@@ -24,8 +24,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo" onClick={() => scrollToSection('hero')}>
-          <img src={logoImage} alt="HerdLinx Logo" className="logo-image" />
-          <span className="logo-text">HerdLinx</span>
+          <img src={logoImage} alt="HerdLinx RFID Solutions" className="logo-image" />
         </div>
         <nav className="nav">
           <button onClick={() => scrollToSection('about')} className="nav-link">

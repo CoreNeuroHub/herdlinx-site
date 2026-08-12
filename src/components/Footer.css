@@ -33,7 +33,7 @@
 }
 
 .footer-logo-image {
-  height: 44px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-fast);
@@ -41,19 +41,6 @@
 
 .footer-logo:hover .footer-logo-image {
   opacity: 0.85;
-}
-
-.footer-logo-text {
-  font-family: var(--font-display);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-white);
-  letter-spacing: 0.03em;
-  transition: var(--transition-fast);
-}
-
-.footer-logo:hover .footer-logo-text {
-  color: var(--accent);
 }
 
 .footer-description {
@@ -154,5 +141,9 @@
 
   .footer-description {
     max-width: 100%;
+  }
+
+  .footer-logo-image {
+    height: 60px;
   }
 }
