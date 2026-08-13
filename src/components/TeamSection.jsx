@@ -5,6 +5,7 @@ import kerriImage from '../images/team/kerri.jpg'
 import hardeepImage from '../images/team/hardeep-ryait.png'
 import brendonImage from '../images/team/brendon-penner.png'
 import karloImage from '../images/team/karlo-pecha.png'
+import arnoldImage from '../images/team/arnold-joseph-aguila.png'
 
 const founders = [
   {
@@ -38,7 +39,7 @@ const uLethbridgeTeam = [
     name: 'Arnold Joseph Aguila',
     role: 'Software/Systems Developer',
     bio: 'Works across the stack, from device firmware to the dashboards operators actually use.',
-    initials: 'AJA',
+    image: arnoldImage,
   },
   {
     name: 'Karlo Pecha',
