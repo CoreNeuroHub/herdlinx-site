@@ -1,6 +1,30 @@
 import { useEffect, useRef, useState } from 'react'
+import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from 'react-icons/fa6'
 import './Footer.css'
 import logoImage from '../images/logo_gold_nobg.png'
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://www.linkedin.com/company/herdlinx',
+    label: 'Herdlinx on LinkedIn',
+    Icon: FaLinkedinIn,
+  },
+  {
+    href: 'https://x.com/HerdLinx',
+    label: 'Herdlinx on X',
+    Icon: FaXTwitter,
+  },
+  {
+    href: 'https://www.instagram.com/herdlinx',
+    label: 'Herdlinx on Instagram',
+    Icon: FaInstagram,
+  },
+  {
+    href: 'https://www.facebook.com/profile.php?id=61590823462971',
+    label: 'Herdlinx on Facebook',
+    Icon: FaFacebookF,
+  },
+]
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -43,11 +67,11 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo" onClick={() => scrollToSection('hero')}>
-              <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
+              <img src={logoImage} alt="Herdlinx RFID Solutions" className="footer-logo-image" />
             </div>
             <p className="footer-description">
               RFID tracking for cattle movement, identification, manifest building,
-              and online management — built for feedlot operators.
+              and online management. Built for feedlot operators.
             </p>
           </div>
 
@@ -57,6 +81,7 @@ const Footer = () => {
               <ul className="footer-link-list">
                 <li><button onClick={() => scrollToSection('about')} className="footer-link">About</button></li>
                 <li><button onClick={() => scrollToSection('product')} className="footer-link">Product</button></li>
+                <li><button onClick={() => scrollToSection('partners')} className="footer-link">Partners</button></li>
                 <li><button onClick={() => scrollToSection('background')} className="footer-link">Background</button></li>
                 <li><button onClick={() => scrollToSection('team')} className="footer-link">The Team</button></li>
                 <li><button onClick={() => scrollToSection('contact')} className="footer-link">Contact</button></li>
@@ -80,8 +105,22 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
+          <div className="footer-social">
+            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                className="footer-social-link"
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon aria-hidden="true" />
+              </a>
+            ))}
+          </div>
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} HerdLinx. All rights reserved.
+            &copy; {new Date().getFullYear()} Herdlinx. All rights reserved.
           </p>
         </div>
       </div>

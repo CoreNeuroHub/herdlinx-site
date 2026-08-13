@@ -3,6 +3,7 @@ import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import InformativeSection from './components/InformativeSection'
 import ProductSection from './components/ProductSection'
+import PartnersSection from './components/PartnersSection'
 import BackgroundSection from './components/BackgroundSection'
 import TeamSection from './components/TeamSection'
 import CTASection from './components/CTASection'
@@ -22,6 +23,7 @@ function App() {
         <HeroSection />
         <InformativeSection />
         <ProductSection />
+        <PartnersSection />
         <BackgroundSection />
         <TeamSection />
         <CTASection />

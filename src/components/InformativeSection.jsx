@@ -56,9 +56,13 @@ const InformativeSection = () => {
 
         <div className="content-wrapper">
           <div className="content-block">
-            <h3 className="content-title">Compliance-ready tracking for modern feedlot operations</h3>
+            <h3 className="content-title">Low-frequency tags read at inches. UHF reads in the alley.</h3>
             <p className="content-text">
-              Our RFID UHF system provides a robust solution for managing cattle across borders and within feedlots. From pen-to-pen transfers to large-scale export operations, we deliver real-time visibility and compliance-ready data.
+              CCIA compliance runs on low-frequency tags that need the animal at the reader.
+              Finished cattle headed to export often take an extra chute trip just to pull
+              that data for paperwork. Herdlinx uses UHF RFID to capture tags as cattle move,
+              building the records feedlots need for pen transfers, manifests, and export
+              documentation without that extra handling.
             </p>
           </div>
 

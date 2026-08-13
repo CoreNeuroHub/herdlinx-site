@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './HeroSection.css'
 import backgroundImage from '../images/background.jpg'
+import brandLogo from '../images/logo_gold_nobg_noarc.png'
 import heroVideo from '../videos/Herdlinx Hero BG.mp4'
 
 const HeroSection = () => {
@@ -56,13 +57,13 @@ const HeroSection = () => {
       <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-content">
-        <p className="hero-brand">HerdLinx</p>
+        <img src={brandLogo} alt="Herdlinx" className="hero-brand" />
         <h1 className="hero-headline">
-          RFID tracking for cattle movement, identification, and compliance
+          Track Every Animal. Handle None of Them
         </h1>
         <p className="hero-support">
-          Real-time visibility across pen transfers, manifest building, and online
-          management — built for feedlot operators who demand accuracy.
+          UHF RFID reads tags as cattle walk the alley. No extra chute trip for finished
+          cattle. No one stationed on the rail to pull data by hand.
         </p>
         <div className="hero-cta-group">
           <button

@@ -43,8 +43,8 @@ const CTASection = () => {
         <div className="cta-inner">
           <h2 className="cta-headline">Ready to modernize your cattle tracking?</h2>
           <p className="cta-support">
-            Built in Lethbridge for feedlot operators who need compliance-ready RFID tracking,
-            manifest building, and online management — without the guesswork.
+            Built in Lethbridge for feedlot operators who need RFID tracking, manifest
+            building, and online management without the extra chute trips.
           </p>
           <button type="button" className="btn btn-primary cta-button" onClick={scrollToContact}>
             Get in touch
