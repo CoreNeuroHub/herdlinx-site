@@ -78,38 +78,32 @@ const BackgroundSection = () => {
       <div className="container">
         <h2 className="section-title">Background</h2>
         
-        {/* EDITABLE CONTENT START */}
-        {/* TODO: Replace this content with actual company background */}
         <div className="background-content">
           <div className="background-story">
             <p className="story-text">
-              Herdlinx was founded with a vision to bridge the gap between traditional 
-              agricultural practices and modern technological innovation. Recognizing the 
-              growing need for efficient livestock management solutions in an increasingly 
-              complex agricultural landscape, our team set out to develop a system that 
-              would empower feedlot operators and farmers with unprecedented visibility 
-              into their operations.
+              Herdlinx is built in Lethbridge, Alberta. CCIA compliance still runs on
+              low-frequency tags that read at inches. For finished cattle headed to export,
+              that often means an extra squeeze-chute trip just to pull tag data for
+              paperwork. The chute is not going anywhere. Cattle go through it plenty across
+              their time in the yard. This is about the one run you can cut: the
+              export-document scan on finished cattle.
             </p>
-            
+
             <p className="story-text">
-              The journey began with extensive research into the challenges faced by 
-              modern agricultural operations. Through collaboration with industry experts, 
-              feedlot managers, and agricultural researchers, we identified critical pain 
-              points in cattle tracking, health monitoring, and operational efficiency. 
-              This foundation of real-world understanding has shaped every aspect of our 
-              product development.
+              Ultra-high-frequency RFID reads at range. Cattle walk the shipping alley at
+              their own pace, a modular antenna captures every tag, and the export records
+              build themselves. Founder Brad Vanderberg came to this after prior UHF RFID
+              work in livestock settings, plus 18 years as an electrician running his own
+              shop in Lethbridge.
             </p>
-            
+
             <p className="story-text">
-              Our commitment to innovation is matched by our dedication to understanding 
-              the agricultural industry. We believe that technology should serve the needs 
-              of those who work the land, and our solutions are designed with this principle 
-              at their core. As we continue to grow and evolve, we remain focused on 
-              delivering value to our clients and advancing the future of smart agriculture.
+              Herdlinx puts identification in the alley, not the chute. Less labour. Less
+              handling stress. Every animal recorded, with live data you can act on. See our
+              founding partners for where the system is running today.
             </p>
           </div>
         </div>
-        {/* EDITABLE CONTENT END */}
       </div>
     </section>
   )

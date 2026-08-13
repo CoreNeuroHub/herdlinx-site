@@ -38,21 +38,23 @@ const ProductSection = () => {
         
         <div className="product-content">
           <div className="product-description">
-            <h3 className="product-title">Advanced RFID Technology</h3>
+            <h3 className="product-title">UHF RFID for feedlot operations</h3>
             <p className="product-text">
-              Our RFID UHF solutions simplify cattle export, import, and pen management with real-time tracking, manifest building, and online management. From feedlot transfers to large-scale operations, we deliver accurate identification, streamlined processes, and enhanced biosecurity across every stage of cattle movement.
+              Core scanning and tracking is live. Herdlinx captures animal ID as cattle move,
+              then builds the records feedlots need for transfers, manifests, and export paperwork.
             </p>
           </div>
           
-          <h3 className="features-section-title">Key Capabilities</h3>
+          <h3 className="features-section-title">What the system does</h3>
           <div className="features-grid">
             <div className="feature-item">
               <div className="feature-icon">
                 <FaGlobe />
               </div>
-              <h4 className="feature-title">Global-Ready Identification</h4>
+              <h4 className="feature-title">Alley scanning</h4>
               <p className="feature-description">
-                UHF RFID tags ensure accurate animal ID for export/import documentation and traceability.
+                UHF antennas read tags as cattle walk designated alleys. Every animal is recorded
+                without a chute stop or a hand-held reader.
               </p>
             </div>
             
@@ -60,9 +62,10 @@ const ProductSection = () => {
               <div className="feature-icon">
                 <FaRoute />
               </div>
-              <h4 className="feature-title">Pen-to-Pen Movement Tracking</h4>
+              <h4 className="feature-title">Pen-to-pen movement</h4>
               <p className="feature-description">
-                Monitor cattle transfers within your feedlot to optimize space and reduce handling errors.
+                Track transfers within your feedlot. Know which animals moved, when, and where,
+                without manual head counts.
               </p>
             </div>
             
@@ -70,9 +73,10 @@ const ProductSection = () => {
               <div className="feature-icon">
                 <FaNetworkWired />
               </div>
-              <h4 className="feature-title">Network Connectivity</h4>
+              <h4 className="feature-title">Yard-wide network</h4>
               <p className="feature-description">
-                Reliable, self-healing network for continuous data flow across large facilities.
+                A self-healing network keeps data flowing across large facilities, from alley
+                readers to your management dashboard.
               </p>
             </div>
             
@@ -80,9 +84,10 @@ const ProductSection = () => {
               <div className="feature-icon">
                 <FaClipboardCheck />
               </div>
-              <h4 className="feature-title">Compliance & Reporting</h4>
+              <h4 className="feature-title">Export and import records</h4>
               <p className="feature-description">
-                Generate export/import reports and manifests that meet international standards with ease.
+                Build manifests and export documentation from live scan data. Cut the extra
+                chute trip on finished cattle headed across the border.
               </p>
             </div>
           </div>
@@ -90,10 +95,10 @@ const ProductSection = () => {
           <div className="product-benefits">
             <h3 className="benefits-title">Benefits</h3>
             <ul className="benefits-list">
-              <li>Streamline export processes with automated ID verification and reduced paperwork delays.</li>
-              <li>Improve operational efficiency by tracking cattle movements without manual intervention.</li>
-              <li>Enhance biosecurity with accurate records for disease control and traceability.</li>
-              <li>Scale from small feedlots to large export hubs with a flexible, adaptable platform.</li>
+              <li>Capture export IDs as cattle move down the shipping alley, not in the squeeze chute.</li>
+              <li>Reduce handling stress and labour on finished cattle headed to market.</li>
+              <li>Keep accurate movement records for biosecurity and traceability.</li>
+              <li>Scale from single-alley installs to full-yard coverage.</li>
             </ul>
           </div>
         </div>
