@@ -66,8 +66,24 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-brand">
-            <div className="footer-logo" onClick={() => scrollToSection('hero')}>
-              <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
+            <div className="footer-brand-header">
+              <div className="footer-logo" onClick={() => scrollToSection('hero')}>
+                <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
+              </div>
+              <div className="footer-social">
+                {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    className="footer-social-link"
+                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
             </div>
             <p className="footer-description">
               RFID tracking for cattle movement, identification, manifest building,
@@ -105,20 +121,6 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <div className="footer-social">
-            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
-              <a
-                key={href}
-                href={href}
-                className="footer-social-link"
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon aria-hidden="true" />
-              </a>
-            ))}
-          </div>
           <p className="footer-copyright">
             &copy; {new Date().getFullYear()} HerdLinx. All rights reserved.
           </p>
