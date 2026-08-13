@@ -141,6 +141,10 @@
   text-align: center;
 }
 
+.product-content--teaser .product-description {
+  margin-bottom: var(--spacing-md);
+}
+
 .product-teaser-outcomes {
   list-style: none;
   padding: 0;
@@ -180,6 +184,86 @@
   text-decoration: none;
 }
 
+.product-photo {
+  margin: 0;
+}
+
+.product-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.product-photo figcaption {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: var(--spacing-xs);
+  text-align: left;
+}
+
+.product-photo--featured {
+  max-width: 960px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.product-photo--featured img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-photo--teaser {
+  max-width: 560px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.product-photo--teaser img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+.product-photo--teaser figcaption {
+  text-align: center;
+}
+
+.product-photo--studio img {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--off-white);
+}
+
+.product-photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  max-width: 960px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.product-photo-pair img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  max-width: 960px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.product-photo-grid img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+
 @media (max-width: 768px) {
   .features-grid {
     grid-template-columns: 1fr;
@@ -192,5 +276,18 @@
 
   .product-benefits {
     padding: var(--spacing-md);
+  }
+
+  .product-photo-pair,
+  .product-photo-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .product-photo--featured img,
+  .product-photo-pair img,
+  .product-photo-grid img,
+  .product-photo--teaser img {
+    aspect-ratio: 4 / 3;
   }
 }

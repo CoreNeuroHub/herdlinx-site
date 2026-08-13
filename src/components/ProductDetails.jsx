@@ -1,6 +1,30 @@
 import { useState, useEffect, useRef } from 'react'
 import { FaGlobe, FaRoute, FaNetworkWired, FaClipboardCheck } from 'react-icons/fa'
 import './ProductSection.css'
+import alleySystem from '../images/product/alley-system.png'
+import readerStudio from '../images/product/reader-studio.png'
+import readerRain from '../images/product/reader-rain.png'
+import readerYard from '../images/product/reader-yard.png'
+import alleyPair from '../images/product/alley-pair.png'
+import alleyCorner from '../images/product/alley-corner.png'
+
+const ALLEY_PHOTOS = [
+  {
+    src: readerYard,
+    alt: 'HerdLinx reader and solar panel mounted on a pole above a muddy cattle alley, with cattle and a barn behind it',
+    caption: 'Solar-powered reader above the alley',
+  },
+  {
+    src: alleyPair,
+    alt: 'Two HerdLinx readers mounted along a wooden cattle alley, aimed inward toward the path',
+    caption: 'Paired readers along the fence line',
+  },
+  {
+    src: alleyCorner,
+    alt: 'HerdLinx reader tilted toward a cattle alley from a fence-corner pole',
+    caption: 'Aimed into the alley from the fence',
+  },
+]
 
 const ProductDetails = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -43,6 +67,33 @@ const ProductDetails = () => {
               HerdLinx captures animal ID as cattle move, then builds the transfer, manifest,
               and export records feedlots already have to produce.
             </p>
+          </div>
+
+          <figure className="product-photo product-photo--featured">
+            <img
+              src={alleySystem}
+              alt="Four HerdLinx readers mounted on poles along both sides of a cattle alley, facing inward"
+            />
+            <figcaption>Readers on a working cattle alley, aimed at the path as cattle walk through.</figcaption>
+          </figure>
+
+          <div className="product-photo-pair">
+            <figure className="product-photo product-photo--studio">
+              <img
+                src={readerStudio}
+                alt="HerdLinx reader from four angles: side profiles, rear pole mount, and front panel"
+                loading="lazy"
+              />
+              <figcaption>The reader: panel antenna, enclosure, and pole clamp.</figcaption>
+            </figure>
+            <figure className="product-photo">
+              <img
+                src={readerRain}
+                alt="HerdLinx reader on a pole in the rain, with a solar panel above the antenna"
+                loading="lazy"
+              />
+              <figcaption>Mounted and running in the rain.</figcaption>
+            </figure>
           </div>
 
           <h3 className="features-section-title">What the system does</h3>
@@ -89,6 +140,16 @@ const ProductDetails = () => {
                 trip on finished cattle headed across the border.
               </p>
             </div>
+          </div>
+
+          <h3 className="features-section-title">In the alley</h3>
+          <div className="product-photo-grid">
+            {ALLEY_PHOTOS.map((photo) => (
+              <figure key={photo.caption} className="product-photo">
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+                <figcaption>{photo.caption}</figcaption>
+              </figure>
+            ))}
           </div>
 
           <div className="product-benefits">

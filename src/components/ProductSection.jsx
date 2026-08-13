@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './ProductSection.css'
+import readerYard from '../images/product/reader-yard.png'
 
 const OUTCOMES = [
   'Less handling of finished cattle.',
@@ -43,6 +44,15 @@ const ProductSection = () => {
         <h2 className="section-title">How it works</h2>
         
         <div className="product-content product-content--teaser">
+          <figure className="product-photo product-photo--teaser">
+            <img
+              src={readerYard}
+              alt="HerdLinx reader and solar panel mounted on a pole above a cattle alley"
+              loading="lazy"
+            />
+            <figcaption>Installed on a working cattle alley.</figcaption>
+          </figure>
+
           <div className="product-description">
             <p className="product-text">
               Cattle walk the alley. Tags read at range. Records for transfers, manifests,
