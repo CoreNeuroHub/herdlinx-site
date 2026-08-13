@@ -4,6 +4,7 @@ import './Header.css'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,7 +14,37 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      document.addEventListener('keydown', handleKeyDown)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [isMenuOpen])
+
+  const closeMenu = () => setIsMenuOpen(false)
+
   const scrollToSection = (sectionId) => {
+    closeMenu()
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -21,12 +52,12 @@ const Header = () => {
   }
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`header ${isScrolled || isMenuOpen ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
         <div className="logo" onClick={() => scrollToSection('hero')}>
           <img src={logoImage} alt="HerdLinx RFID Solutions" className="logo-image" />
         </div>
-        <nav className="nav">
+        <nav id="site-nav" className={`nav ${isMenuOpen ? 'open' : ''}`}>
           <button onClick={() => scrollToSection('about')} className="nav-link">
             About
           </button>
@@ -46,6 +77,18 @@ const Header = () => {
             Contact
           </button>
         </nav>
+        <button
+          type="button"
+          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="site-nav"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+          <span className="menu-toggle-bar" />
+        </button>
       </div>
     </header>
   )
