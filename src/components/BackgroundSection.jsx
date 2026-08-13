@@ -81,7 +81,7 @@ const BackgroundSection = () => {
         <div className="background-content">
           <div className="background-story">
             <p className="story-text">
-              Herdlinx is built in Lethbridge, Alberta. CCIA compliance still runs on
+              HerdLinx is built in Lethbridge, Alberta. CCIA compliance still runs on
               low-frequency tags that read at inches. For finished cattle headed to export,
               that often means an extra squeeze-chute trip just to pull tag data for
               paperwork. The chute is not going anywhere. Cattle go through it plenty across
@@ -98,7 +98,7 @@ const BackgroundSection = () => {
             </p>
 
             <p className="story-text">
-              Herdlinx puts identification in the alley, not the chute. Less labour. Less
+              HerdLinx puts identification in the alley, not the chute. Less labour. Less
               handling stress. Every animal recorded, with live data you can act on. See our
               founding partners for where the system is running today.
             </p>

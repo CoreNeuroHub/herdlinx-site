@@ -6,22 +6,22 @@ import logoImage from '../images/logo_gold_nobg.png'
 const SOCIAL_LINKS = [
   {
     href: 'https://www.linkedin.com/company/herdlinx',
-    label: 'Herdlinx on LinkedIn',
+    label: 'HerdLinx on LinkedIn',
     Icon: FaLinkedinIn,
   },
   {
     href: 'https://x.com/HerdLinx',
-    label: 'Herdlinx on X',
+    label: 'HerdLinx on X',
     Icon: FaXTwitter,
   },
   {
     href: 'https://www.instagram.com/herdlinx',
-    label: 'Herdlinx on Instagram',
+    label: 'HerdLinx on Instagram',
     Icon: FaInstagram,
   },
   {
     href: 'https://www.facebook.com/profile.php?id=61590823462971',
-    label: 'Herdlinx on Facebook',
+    label: 'HerdLinx on Facebook',
     Icon: FaFacebookF,
   },
 ]
@@ -67,7 +67,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-logo" onClick={() => scrollToSection('hero')}>
-              <img src={logoImage} alt="Herdlinx RFID Solutions" className="footer-logo-image" />
+              <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
             </div>
             <p className="footer-description">
               RFID tracking for cattle movement, identification, manifest building,
@@ -120,7 +120,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} Herdlinx. All rights reserved.
+            &copy; {new Date().getFullYear()} HerdLinx. All rights reserved.
           </p>
         </div>
       </div>

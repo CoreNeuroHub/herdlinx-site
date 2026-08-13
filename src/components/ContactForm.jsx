@@ -133,7 +133,7 @@ const ContactForm = () => {
             <h3 className="info-title">Get in touch</h3>
             <p className="info-text">
               Whether you are a feedlot operator, farmer, investor, or potential partner,
-              we are here to discuss how Herdlinx can support your operation.
+              we are here to discuss how HerdLinx can support your operation.
             </p>
             <div className="info-details">
               <p className="info-item">

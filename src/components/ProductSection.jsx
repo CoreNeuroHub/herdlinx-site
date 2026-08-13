@@ -40,7 +40,7 @@ const ProductSection = () => {
           <div className="product-description">
             <h3 className="product-title">UHF RFID for feedlot operations</h3>
             <p className="product-text">
-              Core scanning and tracking is live. Herdlinx captures animal ID as cattle move,
+              Core scanning and tracking is live. HerdLinx captures animal ID as cattle move,
               then builds the records feedlots need for transfers, manifests, and export paperwork.
             </p>
           </div>

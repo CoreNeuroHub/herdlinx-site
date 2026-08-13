@@ -60,7 +60,7 @@ const InformativeSection = () => {
             <p className="content-text">
               CCIA compliance runs on low-frequency tags that need the animal at the reader.
               Finished cattle headed to export often take an extra chute trip just to pull
-              that data for paperwork. Herdlinx uses UHF RFID to capture tags as cattle move,
+              that data for paperwork. HerdLinx uses UHF RFID to capture tags as cattle move,
               building the records feedlots need for pen transfers, manifests, and export
               documentation without that extra handling.
             </p>

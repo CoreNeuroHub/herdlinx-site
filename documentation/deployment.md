@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This document outlines the steps for deploying the Herdlinx website to production.
+This document outlines the steps for deploying the HerdLinx website to production.
 
 ## Prerequisites
 

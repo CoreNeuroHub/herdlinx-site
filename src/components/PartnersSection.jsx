@@ -3,33 +3,45 @@ import './PartnersSection.css'
 import kolkLogo from '../images/partners/kolk-farms.png'
 import albertaInnovatesLogo from '../images/partners/alberta-innovates.png'
 import uLethbridgeLogo from '../images/partners/university-of-lethbridge.png'
+import hubLogo from '../images/partners/hub-for-neuroengineering-solutions.png'
 
-const partners = [
-  {
-    name: 'Kolk Farms',
-    role: 'Signed Founding Partner',
-    description:
-      'Commercial validation on a working southern Alberta feedlot. Kolk Farms is where Herdlinx scanning and tracking runs in daily yard operations.',
-    logo: kolkLogo,
-    logoAlt: 'Kolk Farms Ltd.',
-  },
+const foundingPartner = {
+  name: 'Kolk Farms',
+  role: 'Signed Founding Partner',
+  description:
+    'Commercial validation on a working southern Alberta feedlot. Kolk Farms is where HerdLinx scanning and tracking runs in daily yard operations.',
+  logos: [{ src: kolkLogo, alt: 'Kolk Farms Ltd.' }],
+}
+
+const researchPartners = [
   {
     name: 'Alberta Innovates',
-    role: 'Research deployment',
     description:
-      'Funding and support for validating UHF RFID in commercial feedlot settings. Alberta Innovates is part of the research deployment backing the Herdlinx build.',
-    logo: albertaInnovatesLogo,
-    logoAlt: 'Alberta Innovates',
+      'Funding and support for validating UHF RFID in commercial feedlot settings. Alberta Innovates is part of the research deployment backing the HerdLinx build.',
+    logos: [{ src: albertaInnovatesLogo, alt: 'Alberta Innovates' }],
   },
   {
     name: 'University of Lethbridge',
-    role: 'Research deployment',
     description:
       'A university research deployment supporting the build and the proof. Working with researchers at the University of Lethbridge to validate the system in the field.',
-    logo: uLethbridgeLogo,
-    logoAlt: 'University of Lethbridge',
+    logos: [
+      { src: uLethbridgeLogo, alt: 'University of Lethbridge' },
+      { src: hubLogo, alt: 'Hub for Neuroengineering Solutions' },
+    ],
   },
 ]
+
+const PartnerCard = ({ partner }) => (
+  <div className="partner-card">
+    {partner.role ? <p className="partner-role">{partner.role}</p> : null}
+    <div className={`partner-logo-wrap${partner.logos.length > 1 ? ' partner-logo-wrap--pair' : ''}`}>
+      {partner.logos.map((logo) => (
+        <img key={logo.alt} src={logo.src} alt={logo.alt} className="partner-logo" />
+      ))}
+    </div>
+    <p className="partner-description">{partner.description}</p>
+  </div>
+)
 
 const PartnersSection = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -65,21 +77,21 @@ const PartnersSection = () => {
       <div className="container">
         <h2 className="section-title">Founding Partners</h2>
         <p className="section-subtitle">
-          Herdlinx is in commercial validation with a signed founding partner and research
+          HerdLinx is in commercial validation with a signed founding partner and research
           deployments with Alberta Innovates and the University of Lethbridge.
         </p>
 
         <div className="partners-grid">
-          {partners.map((partner) => (
-            <div key={partner.name} className="partner-card">
-              <div className="partner-logo-wrap">
-                <img src={partner.logo} alt={partner.logoAlt} className="partner-logo" />
-              </div>
-              <p className="partner-role">{partner.role}</p>
-              <h3 className="partner-name">{partner.name}</h3>
-              <p className="partner-description">{partner.description}</p>
+          <PartnerCard partner={foundingPartner} />
+
+          <div className="partners-research">
+            <p className="partner-role">Research deployment</p>
+            <div className="partners-research-grid">
+              {researchPartners.map((partner) => (
+                <PartnerCard key={partner.name} partner={partner} />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

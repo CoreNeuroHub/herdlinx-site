@@ -57,7 +57,7 @@ const HeroSection = () => {
       <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-content">
-        <img src={brandLogo} alt="Herdlinx" className="hero-brand" />
+        <img src={brandLogo} alt="HerdLinx" className="hero-brand" />
         <h1 className="hero-headline">
           Track Every Animal. Handle None of Them
         </h1>

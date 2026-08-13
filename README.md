@@ -1,6 +1,6 @@
-# Herdlinx Website
+# HerdLinx Website
 
-Professional single-page website for Herdlinx, a cattle tracking and monitoring technology company.
+Professional single-page website for HerdLinx, a cattle tracking and monitoring technology company.
 
 ## Getting Started
 

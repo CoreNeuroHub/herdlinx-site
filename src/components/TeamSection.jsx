@@ -49,7 +49,7 @@ const TeamSection = () => {
             <p className="member-role">President & Founder</p>
             <p className="member-bio">
               Born and raised in Lethbridge, Alberta, Brad brings over 18 years of experience
-              as an electrician, running his own successful business. He came to Herdlinx after
+              as an electrician, running his own successful business. He came to HerdLinx after
               prior UHF RFID work in livestock settings, combining that background with a deep
               understanding of feedlot operations to build alley-based cattle identification.
             </p>
