@@ -23,7 +23,7 @@ const researchPartners = [
   {
     name: 'University of Lethbridge',
     description:
-      'Field work with researchers at the University of Lethbridge, including the Hub for Neuroengineering Solutions.',
+      'Field work with researchers at the University of Lethbridge, including an engineering hub.',
     logos: [
       { src: uLethbridgeLogo, alt: 'University of Lethbridge' },
       { src: hubLogo, alt: 'Hub for Neuroengineering Solutions' },
