@@ -53,7 +53,7 @@ const HeroSection = () => {
       <div className="hero-content">
         <img src={brandLogo} alt="HerdLinx" className="hero-brand" />
         <h1 className="hero-headline">
-          Track Every Animal. Handle None of the Cattle.
+          Track Every Animal. Handle None of Them.
         </h1>
         <p className="hero-support">
           Ultra-high-frequency (UHF) RFID reads tags as cattle walk the alley. Finished
