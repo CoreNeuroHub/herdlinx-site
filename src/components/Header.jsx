@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logoImage from '../images/logo_gold_nobg.png'
+import { navigateToHomeSection, scrollToSection } from '../utils/navigation'
 import './Header.css'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,38 +47,54 @@ const Header = () => {
 
   const closeMenu = () => setIsMenuOpen(false)
 
-  const scrollToSection = (sectionId) => {
+  const handleHomeSection = (sectionId) => {
     closeMenu()
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (location.pathname === '/') {
+      scrollToSection(sectionId)
+    } else {
+      navigateToHomeSection(navigate, sectionId)
     }
   }
 
+  const handleLogoClick = () => {
+    closeMenu()
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
+    }
+  }
+
+  const isProductPage = location.pathname === '/product'
+  const isFaqPage = location.pathname === '/faq'
+  const isSubPage = isProductPage || isFaqPage
+
   return (
-    <header className={`header ${isScrolled || isMenuOpen ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
+    <header
+      className={`header ${isScrolled || isMenuOpen || isSubPage ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}
+    >
       <div className="header-container">
-        <div className="logo" onClick={() => scrollToSection('hero')}>
+        <div className="logo" onClick={handleLogoClick} role="link" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}>
           <img src={logoImage} alt="HerdLinx RFID Solutions" className="logo-image" />
         </div>
         <nav id="site-nav" className={`nav ${isMenuOpen ? 'open' : ''}`}>
-          <button onClick={() => scrollToSection('about')} className="nav-link">
+          <button onClick={() => handleHomeSection('about')} className="nav-link" type="button">
             About
           </button>
-          <button onClick={() => scrollToSection('product')} className="nav-link">
+          <Link to="/product" className="nav-link nav-link--route" onClick={closeMenu}>
             Product
-          </button>
-          <button onClick={() => scrollToSection('partners')} className="nav-link">
+          </Link>
+          <button onClick={() => handleHomeSection('partners')} className="nav-link" type="button">
             Partners
           </button>
-          <button onClick={() => scrollToSection('background')} className="nav-link">
-            Background
+          <button onClick={() => handleHomeSection('team')} className="nav-link" type="button">
+            Team
           </button>
-          <button onClick={() => scrollToSection('team')} className="nav-link">
-            The Team
-          </button>
-          <button onClick={() => scrollToSection('contact')} className="nav-cta">
-            Contact
+          <Link to="/faq" className="nav-link nav-link--route" onClick={closeMenu}>
+            FAQ
+          </Link>
+          <button onClick={() => handleHomeSection('contact')} className="nav-cta" type="button">
+            Request a demo
           </button>
         </nav>
         <button

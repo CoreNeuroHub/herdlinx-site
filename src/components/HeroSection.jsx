@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { scrollToSection } from '../utils/navigation'
 import './HeroSection.css'
 import backgroundImage from '../images/background.jpg'
 import brandLogo from '../images/logo_gold_nobg_noarc.png'
@@ -33,13 +34,6 @@ const HeroSection = () => {
     return () => motionQuery.removeEventListener('change', syncPlayback)
   }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section id="hero" className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
       <video
@@ -59,11 +53,12 @@ const HeroSection = () => {
       <div className="hero-content">
         <img src={brandLogo} alt="HerdLinx" className="hero-brand" />
         <h1 className="hero-headline">
-          Track Every Animal. Handle None of Them
+          Track Every Animal. Handle None of the Cattle.
         </h1>
         <p className="hero-support">
-          UHF RFID reads tags as cattle walk the alley. No extra chute trip for finished
-          cattle. No one stationed on the rail to pull data by hand.
+          Ultra-high-frequency (UHF) RFID reads tags as cattle walk the alley. Finished
+          cattle skip the extra chute trip for export IDs. Nobody stationed on the rail
+          pulling data by hand.
         </p>
         <div className="hero-cta-group">
           <button
@@ -78,7 +73,7 @@ const HeroSection = () => {
             className="btn btn-secondary"
             onClick={() => scrollToSection('product')}
           >
-            See the product
+            See how it works
           </button>
         </div>
       </div>

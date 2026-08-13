@@ -51,17 +51,23 @@ const InformativeSection = () => {
       <div className="container">
         <h2 className="section-title">The Challenge</h2>
         <p className="section-subtitle">
-          Cattle trade demands accurate identification and tracking to meet regulations and ensure operational efficiency.
+          Canadian Cattle Identification Agency (CCIA) compliance still runs on low-frequency
+          tags that read at inches. For finished cattle headed to export, that often means
+          one more squeeze-chute run just for paperwork.
         </p>
 
         <div className="content-wrapper">
           <div className="content-block">
             <h3 className="content-title">Low-frequency tags read at inches. UHF reads in the alley.</h3>
             <p className="content-text">
-              CCIA compliance runs on low-frequency tags that need the animal at the reader.
-              Finished cattle headed to export often take an extra chute trip just to pull
-              that data for paperwork. HerdLinx uses UHF RFID to capture tags as cattle move,
-              building the records feedlots need for pen transfers, manifests, and export
+              The chute is not going anywhere. Cattle go through it plenty in the yard. This
+              is about the one run you can cut: the export-document scan on cattle that are
+              already done.
+            </p>
+            <p className="content-text">
+              Cattle keep their CCIA low-frequency tags for compliance. HerdLinx adds UHF
+              tags so the alley reads at range. HerdLinx uses that to capture tags as cattle
+              move, building the records feedlots need for pen transfers, manifests, and export
               documentation without that extra handling.
             </p>
           </div>

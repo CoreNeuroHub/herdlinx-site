@@ -74,6 +74,12 @@
   outline-offset: 2px;
 }
 
+.nav-link--route {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
 .nav-cta {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);

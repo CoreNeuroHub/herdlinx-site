@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { FaLinkedinIn, FaFacebookF, FaInstagram, FaXTwitter } from 'react-icons/fa6'
+import { navigateToHomeSection, scrollToSection } from '../utils/navigation'
 import './Footer.css'
 import logoImage from '../images/logo_gold_nobg.png'
 
@@ -29,6 +31,8 @@ const SOCIAL_LINKS = [
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false)
   const footerRef = useRef(null)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,10 +55,19 @@ const Footer = () => {
     }
   }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+  const handleHomeSection = (sectionId) => {
+    if (location.pathname === '/') {
+      scrollToSection(sectionId)
+    } else {
+      navigateToHomeSection(navigate, sectionId)
+    }
+  }
+
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
     }
   }
 
@@ -67,7 +80,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <div className="footer-brand-header">
-              <div className="footer-logo" onClick={() => scrollToSection('hero')}>
+              <div className="footer-logo" onClick={handleLogoClick} role="link" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleLogoClick()}>
                 <img src={logoImage} alt="HerdLinx RFID Solutions" className="footer-logo-image" />
               </div>
               <div className="footer-social">
@@ -86,8 +99,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="footer-description">
-              RFID tracking for cattle movement, identification, manifest building,
-              and online management. Built for feedlot operators.
+              UHF RFID for cattle movement, identification, and the records that follow.
+              Built in Lethbridge for feedlot operators.
             </p>
           </div>
 
@@ -95,12 +108,12 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-column-title">Navigation</h3>
               <ul className="footer-link-list">
-                <li><button onClick={() => scrollToSection('about')} className="footer-link">About</button></li>
-                <li><button onClick={() => scrollToSection('product')} className="footer-link">Product</button></li>
-                <li><button onClick={() => scrollToSection('partners')} className="footer-link">Partners</button></li>
-                <li><button onClick={() => scrollToSection('background')} className="footer-link">Background</button></li>
-                <li><button onClick={() => scrollToSection('team')} className="footer-link">The Team</button></li>
-                <li><button onClick={() => scrollToSection('contact')} className="footer-link">Contact</button></li>
+                <li><button onClick={() => handleHomeSection('about')} className="footer-link" type="button">About</button></li>
+                <li><Link to="/product" className="footer-link">Product</Link></li>
+                <li><button onClick={() => handleHomeSection('partners')} className="footer-link" type="button">Partners</button></li>
+                <li><button onClick={() => handleHomeSection('team')} className="footer-link" type="button">Team</button></li>
+                <li><Link to="/faq" className="footer-link">FAQ</Link></li>
+                <li><button onClick={() => handleHomeSection('contact')} className="footer-link" type="button">Request a demo</button></li>
               </ul>
             </div>
 

@@ -1,36 +1,19 @@
-import { useEffect } from 'react'
-import Header from './components/Header'
-import HeroSection from './components/HeroSection'
-import InformativeSection from './components/InformativeSection'
-import ProductSection from './components/ProductSection'
-import PartnersSection from './components/PartnersSection'
-import BackgroundSection from './components/BackgroundSection'
-import TeamSection from './components/TeamSection'
-import CTASection from './components/CTASection'
-import ContactForm from './components/ContactForm'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
+import FAQPage from './pages/FAQPage'
 import './App.css'
 
 function App() {
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth'
-  }, [])
-
   return (
-    <div className="App">
-      <Header />
-      <main>
-        <HeroSection />
-        <InformativeSection />
-        <ProductSection />
-        <PartnersSection />
-        <BackgroundSection />
-        <TeamSection />
-        <CTASection />
-        <ContactForm />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+      </Route>
+    </Routes>
   )
 }
 

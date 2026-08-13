@@ -93,7 +93,7 @@ const ContactForm = () => {
 
       setSubmitStatus({
         type: 'success',
-        message: 'Thank you for your interest. We will be in touch shortly.',
+        message: 'Thank you. We will be in touch shortly.',
       })
       setFormData({
         name: '',
@@ -123,17 +123,18 @@ const ContactForm = () => {
       className={`contact-section section fade-in-section ${isVisible ? 'visible' : ''}`}
     >
       <div className="container">
-        <h2 className="section-title">Contact Us</h2>
+        <h2 className="section-title">Request a demo or start a conversation</h2>
         <p className="section-subtitle">
-          Tell us about your operation. We respond to every inquiry personally.
+          Tell us about your yard, partnership, or investment interest. Someone on the team
+          reads every note.
         </p>
 
         <div className="contact-content">
           <aside className="contact-info">
             <h3 className="info-title">Get in touch</h3>
             <p className="info-text">
-              Whether you are a feedlot operator, farmer, investor, or potential partner,
-              we are here to discuss how HerdLinx can support your operation.
+              Feedlot operator, partner, or investor: tell us what you need to see before
+              a next step.
             </p>
             <div className="info-details">
               <p className="info-item">
@@ -244,7 +245,11 @@ const ContactForm = () => {
               className="form-submit"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending…' : 'Send message'}
+              {isSubmitting
+                ? 'Sending…'
+                : formData.interest === 'demo'
+                  ? 'Request a demo'
+                  : 'Send message'}
             </button>
           </form>
         </div>

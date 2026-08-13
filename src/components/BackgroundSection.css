@@ -12,6 +12,10 @@
   background: var(--accent);
 }
 
+.background-section .section-subtitle--light {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .background-image-parallax {
   position: absolute;
   inset: -20% 0;
@@ -41,9 +45,9 @@
 }
 
 .background-content {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
 }
 
 .background-story {
@@ -53,9 +57,17 @@
 .story-text {
   font-size: var(--font-size-base);
   color: rgba(255, 255, 255, 0.82);
-  line-height: 1.8;
+  line-height: 1.85;
   margin-bottom: var(--spacing-md);
   text-align: left;
+}
+
+.story-lead {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.75;
+  padding-left: var(--spacing-md);
+  border-left: 3px solid var(--accent);
 }
 
 .story-text:last-child {
@@ -65,5 +77,9 @@
 @media (max-width: 768px) {
   .story-text {
     font-size: var(--font-size-sm);
+  }
+
+  .story-lead {
+    font-size: var(--font-size-base);
   }
 }

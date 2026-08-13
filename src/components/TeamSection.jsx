@@ -10,13 +10,13 @@ const founders = [
   {
     name: 'Brad Vanderberg',
     role: 'President & Founder',
-    bio: 'Born and raised in Lethbridge, Alberta, Brad brings over 18 years of experience as an electrician, running his own successful business. He came to HerdLinx after prior UHF RFID work in livestock settings, combining that background with a deep understanding of feedlot operations to build alley-based cattle identification.',
+    bio: 'Born and raised in Lethbridge, Alberta. Eighteen years as an electrician running his own shop, plus prior UHF RFID work in livestock settings. That combination is what HerdLinx is built on: alley-based cattle identification that has to work in a real yard.',
     image: bradImage,
   },
   {
     name: 'Kerri Lynn Haney-Vanderberg',
     role: 'Secretary & Co-Founder',
-    bio: "With a strong background in business organization and administration, Kerri brings invaluable support to the team, helping guide the company's direction and growth alongside Brad.",
+    bio: 'Business organization and administration. Runs the company\'s structure and day-to-day direction with Brad.',
     image: kerriImage,
   },
 ]
@@ -24,26 +24,26 @@ const founders = [
 const uLethbridgeTeam = [
   {
     name: 'Hardeep Ryait',
-    role: 'Neuroengineering Head',
-    bio: 'Owns the engineering roadmap — sensors, edge platform, and the data layer end to end.',
+    role: 'Engineering lead',
+    bio: 'Owns the engineering roadmap: sensors, edge platform, and the data layer end to end.',
     image: hardeepImage,
   },
   {
     name: 'Brendon Penner',
-    role: 'Neuroengineering Operations',
-    bio: 'Runs day-to-day operations across the team, partners, and field deployments.',
+    role: 'Operations',
+    bio: 'Day-to-day operations across the team, partners, and field deployments.',
     image: brendonImage,
   },
   {
     name: 'Arnold Joseph Aguila',
     role: 'Software/Systems Developer',
-    bio: 'Builds across the stack — from device firmware up to the dashboards growers actually use.',
+    bio: 'Works across the stack, from device firmware to the dashboards operators actually use.',
     initials: 'AJA',
   },
   {
     name: 'Karlo Pecha',
     role: 'Software Developer',
-    bio: 'Ships the application layer — APIs, services, and the operator-facing tools on top of them.',
+    bio: 'Ships the application layer: APIs, services, and the operator-facing tools on top of them.',
     image: karloImage,
   },
 ]
@@ -99,8 +99,8 @@ const TeamSection = () => {
       <div className="container">
         <h2 className="section-title">The Team</h2>
         <p className="section-subtitle">
-          Founded in Lethbridge, Alberta. Built by operators who understand feedlot operations
-          firsthand, with researchers and engineers from the University of Lethbridge.
+          Founded in Lethbridge. Built with livestock RFID experience, a local trades
+          background, and engineers at the University of Lethbridge.
         </p>
 
         <div className="team-grid">

@@ -7,9 +7,9 @@ import hubLogo from '../images/partners/hub-for-neuroengineering-solutions.png'
 
 const foundingPartner = {
   name: 'Kolk Farms',
-  role: 'Signed Founding Partner',
+  role: 'Signed founding partner',
   description:
-    'Commercial validation on a working southern Alberta feedlot. Kolk Farms is where HerdLinx scanning and tracking runs in daily yard operations.',
+    'Commercial use on a working southern Alberta feedlot. HerdLinx scanning and tracking run here in regular yard work, not a lab demo.',
   logos: [{ src: kolkLogo, alt: 'Kolk Farms Ltd.' }],
 }
 
@@ -17,13 +17,13 @@ const researchPartners = [
   {
     name: 'Alberta Innovates',
     description:
-      'Funding and support for validating UHF RFID in commercial feedlot settings. Alberta Innovates is part of the research deployment backing the HerdLinx build.',
+      'Funding and support for proving UHF RFID in commercial feedlot settings.',
     logos: [{ src: albertaInnovatesLogo, alt: 'Alberta Innovates' }],
   },
   {
     name: 'University of Lethbridge',
     description:
-      'A university research deployment supporting the build and the proof. Working with researchers at the University of Lethbridge to validate the system in the field.',
+      'Field work with researchers at the University of Lethbridge, including the Hub for Neuroengineering Solutions.',
     logos: [
       { src: uLethbridgeLogo, alt: 'University of Lethbridge' },
       { src: hubLogo, alt: 'Hub for Neuroengineering Solutions' },
@@ -77,15 +77,15 @@ const PartnersSection = () => {
       <div className="container">
         <h2 className="section-title">Founding Partners</h2>
         <p className="section-subtitle">
-          HerdLinx is in commercial validation with a signed founding partner and research
-          deployments with Alberta Innovates and the University of Lethbridge.
+          Running in daily operations at Kolk Farms, with research support from Alberta
+          Innovates and the University of Lethbridge.
         </p>
 
         <div className="partners-grid">
           <PartnerCard partner={foundingPartner} />
 
           <div className="partners-research">
-            <p className="partner-role">Research deployment</p>
+            <p className="partner-role">Research support</p>
             <div className="partners-research-grid">
               {researchPartners.map((partner) => (
                 <PartnerCard key={partner.name} partner={partner} />
