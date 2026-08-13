@@ -23,14 +23,14 @@ const founders = [
 
 const uLethbridgeTeam = [
   {
-    name: 'Hardeep Ryait',
-    role: 'Engineering lead',
-    bio: 'Owns the engineering roadmap: sensors, edge platform, and the data layer end to end.',
+    name: 'Dr. Hardeep Ryait, P.Eng.',
+    role: 'Assistant Professor, Engineering',
+    bio: 'Brings hardware, software, and AI expertise from a practical, applied perspective.',
     image: hardeepImage,
   },
   {
     name: 'Brendon Penner',
-    role: 'Operations',
+    role: 'Operations Management',
     bio: 'Day-to-day operations across the team, partners, and field deployments.',
     image: brendonImage,
   },
@@ -111,7 +111,7 @@ const TeamSection = () => {
 
         <div className="team-group">
           <p className="team-group-label">University of Lethbridge</p>
-          <p className="team-group-note">Hub for Neuroengineering Solutions</p>
+          <p className="team-group-note">Core Hub for Engineering</p>
           <div className="team-grid">
             {uLethbridgeTeam.map((member) => (
               <TeamMember key={member.name} member={member} />
