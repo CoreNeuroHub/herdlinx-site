@@ -185,6 +185,9 @@
   .nav-link,
   .nav-cta {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: var(--font-size-lg);
     min-height: 48px;
