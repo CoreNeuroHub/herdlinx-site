@@ -2,6 +2,68 @@ import { useState, useEffect, useRef } from 'react'
 import './TeamSection.css'
 import bradImage from '../images/team/brad.png'
 import kerriImage from '../images/team/kerri.jpg'
+import hardeepImage from '../images/team/hardeep-ryait.png'
+import brendonImage from '../images/team/brendon-penner.png'
+import karloImage from '../images/team/karlo-pecha.png'
+
+const founders = [
+  {
+    name: 'Brad Vanderberg',
+    role: 'President & Founder',
+    bio: 'Born and raised in Lethbridge, Alberta, Brad brings over 18 years of experience as an electrician, running his own successful business. He came to HerdLinx after prior UHF RFID work in livestock settings, combining that background with a deep understanding of feedlot operations to build alley-based cattle identification.',
+    image: bradImage,
+  },
+  {
+    name: 'Kerri Lynn Haney-Vanderberg',
+    role: 'Secretary & Co-Founder',
+    bio: "With a strong background in business organization and administration, Kerri brings invaluable support to the team, helping guide the company's direction and growth alongside Brad.",
+    image: kerriImage,
+  },
+]
+
+const uLethbridgeTeam = [
+  {
+    name: 'Hardeep Ryait',
+    role: 'Neuroengineering Head',
+    bio: 'Owns the engineering roadmap — sensors, edge platform, and the data layer end to end.',
+    image: hardeepImage,
+  },
+  {
+    name: 'Brendon Penner',
+    role: 'Neuroengineering Operations',
+    bio: 'Runs day-to-day operations across the team, partners, and field deployments.',
+    image: brendonImage,
+  },
+  {
+    name: 'Arnold Joseph Aguila',
+    role: 'Software/Systems Developer',
+    bio: 'Builds across the stack — from device firmware up to the dashboards growers actually use.',
+    initials: 'AJA',
+  },
+  {
+    name: 'Karlo Pecha',
+    role: 'Software Developer',
+    bio: 'Ships the application layer — APIs, services, and the operator-facing tools on top of them.',
+    image: karloImage,
+  },
+]
+
+const TeamMember = ({ member }) => (
+  <div className="team-member">
+    <div className={`member-avatar${member.initials ? ' member-avatar--placeholder' : ''}`}>
+      {member.image ? (
+        <img src={member.image} alt={member.name} className="avatar-image" />
+      ) : (
+        <span className="avatar-initials" aria-hidden="true">
+          {member.initials}
+        </span>
+      )}
+    </div>
+    <h3 className="member-name">{member.name}</h3>
+    <p className="member-role">{member.role}</p>
+    <p className="member-bio">{member.bio}</p>
+  </div>
+)
 
 const TeamSection = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -29,41 +91,31 @@ const TeamSection = () => {
   }, [])
 
   return (
-    <section 
-      id="team" 
+    <section
+      id="team"
       ref={sectionRef}
       className={`team-section section fade-in-section ${isVisible ? 'visible' : ''}`}
     >
       <div className="container">
         <h2 className="section-title">The Team</h2>
         <p className="section-subtitle">
-          Founded in Lethbridge, Alberta. Built by operators who understand feedlot operations firsthand.
+          Founded in Lethbridge, Alberta. Built by operators who understand feedlot operations
+          firsthand, with researchers and engineers from the University of Lethbridge.
         </p>
 
         <div className="team-grid">
-          <div className="team-member">
-            <div className="member-avatar">
-              <img src={bradImage} alt="Brad Vanderberg" className="avatar-image" />
-            </div>
-            <h3 className="member-name">Brad Vanderberg</h3>
-            <p className="member-role">President & Founder</p>
-            <p className="member-bio">
-              Born and raised in Lethbridge, Alberta, Brad brings over 18 years of experience
-              as an electrician, running his own successful business. He came to HerdLinx after
-              prior UHF RFID work in livestock settings, combining that background with a deep
-              understanding of feedlot operations to build alley-based cattle identification.
-            </p>
-          </div>
-          
-          <div className="team-member">
-            <div className="member-avatar">
-              <img src={kerriImage} alt="Kerri Lynn Haney-Vanderberg" className="avatar-image" />
-            </div>
-            <h3 className="member-name">Kerri Lynn Haney-Vanderberg</h3>
-            <p className="member-role">Secretary & Co-Founder</p>
-            <p className="member-bio">
-              With a strong background in business organization and administration, Kerri brings invaluable support to the team, helping guide the company's direction and growth alongside Brad.
-            </p>
+          {founders.map((member) => (
+            <TeamMember key={member.name} member={member} />
+          ))}
+        </div>
+
+        <div className="team-group">
+          <p className="team-group-label">University of Lethbridge</p>
+          <p className="team-group-note">Hub for Neuroengineering Solutions</p>
+          <div className="team-grid">
+            {uLethbridgeTeam.map((member) => (
+              <TeamMember key={member.name} member={member} />
+            ))}
           </div>
         </div>
       </div>
